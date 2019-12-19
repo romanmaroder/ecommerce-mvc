@@ -22,7 +22,6 @@ class Router
         // Получить строку запроса
         if (!empty($_SERVER['REQUEST_URI'])) {
             return trim($_SERVER['REQUEST_URI'], '/');
-
         }
     }
 
@@ -37,15 +36,30 @@ class Router
             // Сравниваем $uriPattern и $uri
             if (preg_match("~$uriPattern~", $uri)) {
 
+//                echo'<br> Где ищем (запрос, который набрал пользователь): '.$uri;
+//                echo'<br> Что ищем (совпадение из правил): ' .$uriPattern;
+//                echo'<br> Кто обрабатывает: ' .$path;
+
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+
+//                echo'<br><br> Нужно сформировать: ' .$internalRoute. '<br><br>';
+
+
                 // Если есть определить какой контроллер и action обрабатывают запрос
-                $segments = explode('/', $path);
+                $segments = explode('/', $internalRoute);
 
                 // Получаем название контроллера
-
                 $controllerName = ucfirst(array_shift($segments)) . 'Controller';
 
                 // Получаем название action
                 $actionName = 'action' . ucfirst(array_shift($segments));
+
+//                echo'<br> controller name: ' .$controllerName;
+//                echo'<br> action name: ' .$actionName;
+
+                $parametrs = $segments;
+//                echo'<pre>';
+//                print_r($parametrs);
 
                 // Подключить файл класса-контроллера
                 $controllerFile = ROOT.'/controllers/' . $controllerName . '.php';
@@ -57,7 +71,7 @@ class Router
                 $controllerObject = new $controllerName;
 
                 // Вызвать метод ( т.е action)
-                $result = $controllerObject->$actionName();
+                $result = call_user_func_array(array($controllerObject, $actionName),$parametrs);
                 if ($result != null) {
                     break;
                 }

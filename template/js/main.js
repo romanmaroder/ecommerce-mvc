@@ -98,20 +98,27 @@ $(document).ready(function () {
         let id = $(this).attr('data-id');
         if (!block.is(e.target) // проверка условия если клик был не по нашему блоку
             && block.has(e.target).length === 0) { // проверка условия если клик не по его дочерним элементам
-            let url = "?option=details&cat_id=6&id=" + id;
+            let url = "/product/" + id;
             $(location).attr('href', url);
         }
     });
 
     $('.filter__link').on('click', selectCategory);
-    function selectCategory () {
-        let id = $(this).attr('data-id');
-        $.ajax({
-           type:'POST',
-           url: "models/Category.php",
-           data: {id:id},
-            success:function() {
-               alert('id отправлен в models/Category.php ')
+
+    function selectCategory(e) {
+        e.preventDefault();
+        let id = $(this).attr('data-href');
+        history.replaceState("","",id) ;
+
+            $.ajax({
+            type: 'POST',
+            url: "models/Product.php",
+            data: {id: id},
+            success: function (data) {
+                alert(data);
+            },
+            error: function (data) {
+                alert("ошибка передачи данных");
             }
 
         });

@@ -283,7 +283,7 @@
 }
 
 .card {
-    max-width: 315px;
+    width: 315px;
     height: 388px;
     background-color: #fff;
     display: -webkit-box;

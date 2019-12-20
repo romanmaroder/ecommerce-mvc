@@ -11,8 +11,6 @@ class Category
     {
         $db = Db::getConnection();
 
-//        $id = (int)trim(htmlspecialchars($_POST['id']));
-
         $categoryList = array();
 
         $result = $db->query("SELECT * FROM category ");

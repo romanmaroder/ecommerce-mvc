@@ -11,8 +11,13 @@
     <link rel="stylesheet" href="/template/libs/jquery.formstyler.theme.css" />
     <link rel="stylesheet" href="/template/libs/jquery.formstyler.css" />
     <link rel="stylesheet" href="/template/css/main.css" />
+
     <link rel="stylesheet" href="/template/css/home.css" />
 
+<!--    стили для страницы с фильтрами-->
+    <link rel="stylesheet" href="/template/css/view.css" />
+
+<!--    стили для страницы одного товара-->
     <link rel="stylesheet" href="/template/css/product-details.css" />
 
 
@@ -27,13 +32,16 @@
     <div class="nav-container container">
         <div class="nav-logo logo"><span class="logo__text logo__text--special">ex</span><span class="logo__text">plore</span></div><a class="nav__burger burger"><span class="burger__line"></span></a>
         <ul class="nav-menu menu">
-            <li class="menu__item"><a class="menu__link" href="home.html">Home</a></li>
-            <li class="menu__item"><a class="menu__link" href="view.html">Mens</a></li>
-            <li class="menu__item"><a class="menu__link" href="view.html">Womens</a></li>
-            <li class="menu__item"><a class="menu__link" href="view.html">Kids</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Blog</a></li>
+            <li class="menu__item"><a class="menu__link" href="/">Home</a></li>
+            <?php foreach ($navCategories as $category):?>
+                <li class="menu__item">
+                    <a class="menu__link<?php if($categoryId == $category['cat_id']) echo '--active';?>" href="/category/<?php echo $category['cat_id'] ?>"><?php echo $category['category_name'] ?></a>
+                </li>
+            <?php endforeach;?>
+            <li class="menu__item"><a class="menu__link" href="/blog/">Blog</a></li>
         </ul>
-        <div class="nav-cart cart" data-count="3"><img src="/template/images/nav/header_cart.png" alt="cart" title="Cart" />
+        <div class="nav-cart cart" data-count="3">
+            <img src="/template/images/nav/header_cart.png" alt="cart" title="Cart" />
             <div class="cart__mini-cart"></div>
         </div>
         <div class="nav-login login">

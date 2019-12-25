@@ -1,17 +1,17 @@
 $(document).ready(function () {
 // Slide range
-    $("#slider-range").slider({
-        range: true,
-        min: 0,
-        max: 500,
-        values: [25, 250],
-        slide: function (event, ui) {
-            $("#amount").val("$ " + ui.values[0]);
-            $("#amount1").val("$ " + ui.values[1]);
-        }
-    });
-    $("#amount").val("$ " + $("#slider-range").slider("values", 0));
-    $("#amount1").val("$ " + $("#slider-range").slider("values", 1));
+//     $("#slider-range").slider({
+//         range: true,
+//         min: 0,
+//         max: 500,
+//         values: [25, 250],
+//         slide: function (event, ui) {
+//             $("#amount").val("$ " + ui.values[0]);
+//             $("#amount1").val("$ " + ui.values[1]);
+//         }
+//     });
+//     $("#amount").val("$ " + $("#slider-range").slider("values", 0));
+//     $("#amount1").val("$ " + $("#slider-range").slider("values", 1));
 //Aside Accordeon
     $('[data-accordeon-head]').on('click', function () {
         $(this).next().toggleClass('accordeon-body--active');
@@ -24,7 +24,7 @@ $(document).ready(function () {
         if (target.is('.top-filter__icon--list') || target.is('#list')) {
             $('.view-grid').addClass('view-list').removeClass('view-grid');
             $('.card__grid').css('display', 'none');
-            $('.card__list').css('display', 'flex');
+            $('.card__list').css({'display':'flex','width':'100%'});
             $('.top-filter__icon--list svg').css('fill', '#36C2FF');
             $('.top-filter__icon--grid svg').css('fill', '#64759f');
         } else if (target.is('.top-filter__icon--grid') || target.is('#grid')) {

@@ -14,27 +14,32 @@
         <div class="container">
             <div class="product__inner">
                 <div class="slider slider-for">
-                    <div class="slider-for__item"><img src="/template/images/products/bag_big.png" /></div>
-                    <div class="slider-for__item"><img src="/template/images/products/bag_big.png" /></div>
-                    <div class="slider-for__item"><img src="/template/images/products/bag_big.png" /></div>
-                    <div class="slider-for__item"><img src="/template/images/products/bag_big.png" /></div>
+                    <div class="slider-for__item"><img src="<?php echo $product['image_big'];?>" /></div>
+                    <div class="slider-for__item"><img src="<?php echo $product['image_big'];?>" /></div>
+                    <div class="slider-for__item"><img src="<?php echo $product['image_big'];?>" /></div>
+                    <div class="slider-for__item"><img src="<?php echo $product['image_big'];?>" /></div>
                 </div>
                 <div class="slider slider-nav">
-                    <div class="slider-nav__item"><img src="/template/images/products/bag_wooman.png" /></div>
-                    <div class="slider-nav__item"><img src="/template/images/products/bag_wooman.png" /></div>
-                    <div class="slider-nav__item"><img src="/template/images/products/bag_wooman.png" /></div>
-                    <div class="slider-nav__item"><img src="/template/images/products/bag_wooman.png" /></div>
+                    <div class="slider-nav__item"><img src="<?php echo $product['image'];?>" /></div>
+                    <div class="slider-nav__item"><img src="<?php echo $product['image'];?>" /></div>
+                    <div class="slider-nav__item"><img src="<?php echo $product['image'];?>" /></div>
+                    <div class="slider-nav__item"><img src="<?php echo $product['image'];?>" /></div>
                 </div>
                 <div class="product__content">
-                    <div class="product__title">Bag of ruposhi</div>
-                    <div class="product__price">$28</div>
-                    <div class="product__text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit,sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit</div>
+                    <div class="product__title"><?php echo $product['name'];?></div>
+                    <div class="product__price">$<?php echo $product['price'];?></div>
+                    <div class="product__text"><?php echo $product['content'];?></div>
                     <form class="product__form form-details">
-                        <div class="form-details__block"><select class="form-details__select elem-select">
-                                <option value="colors">Colors</option>
-                            </select><select class="form-details__select elem-select">
-                                <option value="Sizes">Sizes</option>
-                            </select></div><button class="btn btn__form-details">Add to cart</button>
+                        <div class="form-details__block">
+                            <select class="form-details__select elem-select">
+                                <option value="" hidden>Color</option>
+                                <option value="colors"><?php echo $product['color'];?></option>
+                            </select>
+                            <select class="form-details__select elem-select">
+                                <option value="" hidden>Sizes</option>
+                                <option value="Sizes"><?php echo $product['size'];?></option>
+                            </select>
+                        </div><button class="btn btn__form-details">Add to cart</button>
                     </form>
                 </div>
             </div>

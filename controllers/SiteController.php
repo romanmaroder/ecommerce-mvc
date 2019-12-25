@@ -10,6 +10,8 @@ class SiteController
         $categories = array();
         $categories = Category::getCategoriesList();
 
+        $navCategories = array();
+        $navCategories = Category::getNavCategoryList();
 
         $latestProducts = array();
         $latestProducts = Product::getLatestProducts(7);

@@ -4,9 +4,12 @@
 <header class="header">
     <div class="container">
         <h1 class="header__title">Winter Collection</h1>
-        <div class="header__subtitle">Buy stylish products in our shop!</div><a class="header-button">
+        <div class="header__subtitle">Buy stylish products in our shop!</div>
+        <a class="header-button" href="/catalog/">
             <div class="header-button__text">SHOP NOW</div>
-            <div class="header-button__arrow"><img src="/template/images/header/arrow_right.png" alt="arrow" title="shop now" /></div>
+            <div class="header-button__arrow">
+                <img src="/template/images/header/arrow_right.png" alt="arrow" title="shop now" />
+            </div>
         </a>
     </div>
 </header>

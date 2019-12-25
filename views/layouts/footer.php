@@ -58,7 +58,12 @@
 <script src="/template/libs/jquery.formstyler.js"></script>
 <script src="/template/libs/all.min.js"></script>
 <script src="/template/js/main.js"></script>
+
 <script src="/template/js/slider.js"></script>
+
+<!--скрипты для страницы с фильтрами-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<script src="/template/js/filter.js"></script>
 
 
 </body>

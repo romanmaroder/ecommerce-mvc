@@ -140,7 +140,7 @@ $(document).ready(function () {
 
     $('.cart__mini-cart').on('click', '.cart__main-link', function () {
 
-        let url = "?option=cart&cat_id=5";
+        let url = "/cart/";
         location.href = url;
         history.pushState('', '', url);
     });

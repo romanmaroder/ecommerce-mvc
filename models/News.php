@@ -40,8 +40,8 @@ class News
 
         $i = 0;
         while ($row = $result->fetch()) {
-            $newsList[$i]['id'] = $row['id'];
-            $newsList[$i]['title'] = $row['title'];
+            $newsList[$i]['id']            = $row['id'];
+            $newsList[$i]['title']         = $row['title'];
             $newsList[$i]['short_content'] = $row['short_content'];
             $i++;
         }

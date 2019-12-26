@@ -260,7 +260,7 @@
                                                                         alt="<?php echo $product['name']; ?>"
                                                                         title="<?php echo $product['name']; ?>"/></div>
                             <div class="card__content">
-                                <div class="card__title"><?php echo $product['name']; ?></div>
+                                <div class="card__title">ID:<?php echo $product['id']; ?><?php echo $product['name']; ?></div>
                                 <div class="card__subtitle"><?php echo $product['description']; ?></div>
                                 <div class="card__price">$<?php echo $product['price']; ?></div>
                             </div>

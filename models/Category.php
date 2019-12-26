@@ -35,10 +35,10 @@ class Category
 
         $i = 0;
         while ($row = $result->fetch()) {
-            $categoryList[$i]['cat_id']        = $row['cat_id'];
-            $categoryList[$i]['category_name'] = $row['category_name'];
+            $navCategoryList[$i]['cat_id']        = $row['cat_id'];
+            $navCategoryList[$i]['category_name'] = $row['category_name'];
             $i++;
         }
-        return $categoryList;
+        return $navCategoryList;
     }
 }

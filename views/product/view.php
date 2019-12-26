@@ -15,14 +15,14 @@
             <div class="product__inner">
                 <div class="slider slider-for">
                     <div class="slider-for__item"><img src="<?php echo $product['image_big'];?>" /></div>
-                    <div class="slider-for__item"><img src="<?php echo $product['image_big'];?>" /></div>
-                    <div class="slider-for__item"><img src="<?php echo $product['image_big'];?>" /></div>
+                    <div class="slider-for__item"><img src="<?php echo $product['image_big_2'];?>" /></div>
+                    <div class="slider-for__item"><img src="<?php echo $product['image_big_3'];?>" /></div>
                     <div class="slider-for__item"><img src="<?php echo $product['image_big'];?>" /></div>
                 </div>
                 <div class="slider slider-nav">
                     <div class="slider-nav__item"><img src="<?php echo $product['image'];?>" /></div>
-                    <div class="slider-nav__item"><img src="<?php echo $product['image'];?>" /></div>
-                    <div class="slider-nav__item"><img src="<?php echo $product['image'];?>" /></div>
+                    <div class="slider-nav__item"><img src="<?php echo $product['image_2'];?>" /></div>
+                    <div class="slider-nav__item"><img src="<?php echo $product['image_3'];?>" /></div>
                     <div class="slider-nav__item"><img src="<?php echo $product['image'];?>" /></div>
                 </div>
                 <div class="product__content">

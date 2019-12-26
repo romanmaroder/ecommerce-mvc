@@ -3,7 +3,7 @@
 
 class Product
 {
-    const SHOW_BY_DEFAULT = 6;
+    const SHOW_BY_DEFAULT = 3;
 
     /**
      * Returns an array of products
@@ -22,7 +22,7 @@ class Product
 
         $productList = array();
 
-        $result = $db->query("SELECT id, name, description, price, image, content FROM product  ORDER BY id DESC 
+        $result = $db->query("SELECT id, name, description, price, image, content FROM product  ORDER BY id ASC 
                             LIMIT " . $count . " ");
 
         $i = 0;
@@ -47,16 +47,19 @@ class Product
      * @return array
      */
 
-    public static function getProductsListByCategory($categoryId)
+    public static function getProductsListByCategory($categoryId, $page = 1)
     {
         if ($categoryId) {
+
+            $page   = intval($page);
+            $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+
             $db       = Db::getConnection();
             $products = array();
             $result   = $db->query("SELECT id, name, price, image, description, content FROM product WHERE 
-                       cat_id = '" . $categoryId . "' ORDER BY id DESC LIMIT " . self::SHOW_BY_DEFAULT);
+                       cat_id = '" . $categoryId . "' ORDER BY id ASC LIMIT  " . self::SHOW_BY_DEFAULT . "  OFFSET  $offset ");
 
             $i = 0;
-
             while ($row = $result->fetch()) {
                 $products[$i]['id']          = $row['id'];
                 $products[$i]['name']        = $row['name'];
@@ -80,14 +83,34 @@ class Product
 
     public static function getProductById($id)
     {
-        $id =intval($id);
+        $id = intval($id);
         if ($id) {
+
             $db = Db::getConnection();
+
             $result = $db->query("SELECT * FROM product WHERE id=" . $id);
             $result->setFetchMode(PDO::FETCH_ASSOC);
 
             return $result->fetch();
         }
+    }
+
+    /**
+     * Return total products
+     *
+     * @param $categoryId - id категории товара
+     *
+     * @return  - кол-во товаров в категории
+     */
+
+    public static function getTotalProductsInCategory($categoryId)
+    {
+        $db     = Db::getConnection();
+        $result = $db->query("SELECT count(id) AS count FROM product WHERE cat_id = '$categoryId' ");
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $result->fetch();
+
+        return $row['count'];
     }
 
 }

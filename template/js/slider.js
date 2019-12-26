@@ -64,6 +64,7 @@ $(document).ready(function () {
         arrows: false,
         dots: false,
         // centerMode: true,
-        focusOnSelect: true
+        focusOnSelect: true,
+        infinite: true
     });
 });

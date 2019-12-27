@@ -46,8 +46,9 @@
         </div>
         <div class="nav-login login">
             <div class="login__inner"><select class="login__select">
-                    <option value="My Account">My Account</option>
-                    <option value="Quit">Quit</option>
+                    <option value="my_account">My Account</option>
+                    <option value="registration">Registration</option>
+                    <option value="quit">Quit</option>
                 </select>
                 <div class="login__arrow"></div>
             </div>

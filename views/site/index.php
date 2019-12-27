@@ -99,7 +99,7 @@
                 </ul>
             </div>
             <ul class="products__content">
-                <? foreach ($latestProducts as $product ) :?>
+                <?php foreach ($latestProducts as $product ) :?>
                 <li class="card card--bg" data-id="<?php echo $product['id'];?>">
                     <a class="card__link card__add-btn" href="#" data-id="<?php echo $product['id'];?>">Add to card</a>
                     <div class="card__add"></div>

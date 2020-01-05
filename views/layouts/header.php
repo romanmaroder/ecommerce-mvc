@@ -50,7 +50,8 @@
             <?php endforeach; ?>
             <li class="menu__item"><a class="menu__link" href="/blog/">Blog</a></li>
         </ul>
-        <div class="nav-cart cart" data-count="3">
+        <div class="nav-cart cart">
+            <span id="cart-count" class="cart__count"><?php echo Cart::countItems();?></span>
             <img src="/template/images/nav/header_cart.png" alt="cart" title="Cart"/>
             <div class="cart__mini-cart"></div>
         </div>

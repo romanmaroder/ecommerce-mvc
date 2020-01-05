@@ -254,7 +254,7 @@
                 <ul class="view-grid">
                     <?php foreach ($latestProducts as $product) : ?>
                         <li class="card card--bg card__grid" data-id="<?php echo $product['id']; ?>">
-                            <a class="card__link card__add-btn" href="#" data-id="">Add to card</a>
+                            <a class="card__link card__add-btn" href="#" data-id="<?php echo $product['id'];?>">Add to card</a>
                             <div class="card__add"></div>
                             <div class="card__img card__img--grid"><img src="<?php echo $product['image']; ?>"
                                                                         alt="<?php echo $product['name']; ?>"

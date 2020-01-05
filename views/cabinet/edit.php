@@ -19,7 +19,7 @@
                         <li>-<?php echo $error; ?></li>
                     <?php endforeach; ?>
                 </ul>
-            <? endif; ?>
+            <?php endif; ?>
 
             <div class="singup-form">
                 <h2>Data Editing</h2>
@@ -38,7 +38,7 @@
                 </form>
                 <!-- // registration form-->
             </div>
-        <? endif; ?>
+        <?php endif; ?>
     </div>
 </section>
 

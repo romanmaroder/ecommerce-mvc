@@ -259,7 +259,8 @@
                         <?php /** @var \CatalogController $categoryProducts */
                         foreach ($categoryProducts as $product) : ?>
                             <li class="card card--bg card__grid" data-id="<?php echo $product['id']; ?>">
-                                <a class="card__link card__add-btn" href="#" data-id="">Add to card</a>
+                                <a class="card__link card__add-btn" href="/cart/add/<?php echo $product['id'];?>"
+                                    data-id="<?php echo $product['id'];?>" >Add to card</a>
                                 <div class="card__add"></div>
                                 <div class="card__img card__img--grid"><img src="<?php echo $product['image']; ?>"
                                                                             alt="<?php echo $product['name']; ?>"
@@ -285,10 +286,9 @@
                                     <div class="card__subtitle"><?php echo $product['description']; ?></div>
                                     <div class="card__price card__price--list">$<?php echo $product['price']; ?></div>
                                     <div class="card__text"><?php echo $product['content']; ?></div>
-                                    <button class="btn btn__card card__add-btn" data-id="<?php echo $product['id']; ?>">
-                                        Add
-                                        to card
-                                    </button>
+                                    <a href="/cart/add/<?php echo $product['id'];?>" class="btn btn__card card__add-btn"
+                                       data-id="<?php echo $product['id']; ?>">
+                                        Add to card </a>
                                 </div>
                             </li>
                         <?php endforeach; ?>

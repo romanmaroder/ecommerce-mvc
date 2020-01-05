@@ -103,7 +103,7 @@
             <ul class="products__content">
                 <?php foreach ($latestProducts as $product ) :?>
                 <li class="card card--bg" data-id="<?php echo $product['id'];?>">
-                    <a class="card__link card__add-btn" href="#" data-id="<?php echo $product['id'];?>">Add to card</a>
+                    <a class="card__link card__add-btn" href="/cart/add/<?php echo $product['id'];?>" data-id="<?php echo $product['id'];?>">Add to card</a>
                     <div class="card__add"></div>
                     <div class="card__img">
                         <img src="<?php echo $product['image'];?>" alt="<?php echo $product['name'];?>" title="<?php echo $product['name'];?>" />

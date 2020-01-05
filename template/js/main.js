@@ -4,7 +4,16 @@ $(document).ready(function () {
 
     // Styler-form
     setTimeout(function () {
+
         $('.form-details__select').styler();
+
+        // $('.login__select').styler({
+        //     onSelectClosed: function (e) {
+        //         // val['cabinet'] = $('[data-name] option:selected').val();
+        //          document.location.href = "/login";
+        //     }
+        // });
+
 
         $('.form-filter__select--name-size').styler({
             onSelectClosed: function (e) {

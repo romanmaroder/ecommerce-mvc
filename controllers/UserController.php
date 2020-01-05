@@ -12,7 +12,7 @@ class UserController
         $name     = '';
         $email    = '';
         $password = '';
-        $result = false;
+        $result   = false;
 
         if (isset($_POST['submit'])) {
             $name     = $_POST['name'];
@@ -33,8 +33,8 @@ class UserController
                 $errors[] = 'Пароль должен быть не меньше 6 символов';
             }
 
-            if(User::checkEmailExist($email)) {
-                $errors[] ='Такой E-mail уже используеться';
+            if (User::checkEmailExist($email)) {
+                $errors[] = 'Такой E-mail уже используеться';
             }
 
             if ($errors == false) {
@@ -44,5 +44,56 @@ class UserController
         require_once(ROOT . '/views/user/register.php');
 
         return true;
+    }
+
+    public function actionLogin()
+    {
+        $navCategories = array();
+        $navCategories = Category::getNavCategoryList();
+
+
+        $email    = '';
+        $password = '';
+
+        if (isset($_POST['submit'])) {
+            $email    = trim(htmlspecialchars($_POST['email']));
+            $password = trim(htmlspecialchars($_POST['password']));
+
+            $errors = false;
+
+            //Валидация полей
+            if (!User::checkEmail($email)) {
+                $errors[] = 'Неправильный email';
+            }
+            if (!User::checkPassword($password)) {
+                $errors[] = 'Неправильный password';
+            }
+
+            // Проверяем существование пользователя
+            $userId = User::checkUserData($email, $password);
+
+            if ($userId == false) {
+                //Если данные не правильные, показываем ошибку
+                $errors[] = 'Неправльные данные для входа на сайт';
+            } else {
+                //Если данные правильные, запоминаем пользователя (сессия)
+                User::auth($userId);
+
+                //Перенаправляем пользователя в кабинет
+                header("Location: /cabinet/");
+            }
+        }
+        require_once(ROOT . '/views/user/login.php');
+
+        return true;
+    }
+
+    /**
+     * Удаляем пользователя из сессии
+     */
+    public function actionLogout()
+    {
+        unset($_SESSION['user']);
+        header("Location: /");
     }
 }

@@ -1,4 +1,6 @@
-<?php include (ROOT.'/views/layouts/header.php') ?>
+<?php include (ROOT.'/views/layouts/header.php');
+/** @var TYPE_NAME $categories */
+?>
 
 
 <header class="header">

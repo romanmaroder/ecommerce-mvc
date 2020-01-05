@@ -256,7 +256,8 @@
                         </div>
                     </form>
                     <ul class="view-grid">
-                        <?php foreach ($categoryProducts as $product) : ?>
+                        <?php /** @var \CatalogController $categoryProducts */
+                        foreach ($categoryProducts as $product) : ?>
                             <li class="card card--bg card__grid" data-id="<?php echo $product['id']; ?>">
                                 <a class="card__link card__add-btn" href="#" data-id="">Add to card</a>
                                 <div class="card__add"></div>
@@ -293,7 +294,8 @@
                         <?php endforeach; ?>
                     </ul>
                     <div class="pagination">
-                        <?php echo $pagination->get(); ?>
+                        <?php /** @var \Pagination $pagination */
+                        echo $pagination->get(); ?>
                     </div>
                 </div>
             </div>

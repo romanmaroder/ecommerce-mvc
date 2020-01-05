@@ -16,7 +16,72 @@ class User
     }
 
     /**
+     * Проверяем существует ли пользователь с заданными $email и $password
+     *
+     * @param string $email
+     * @param string $password
+     *
+     * @return mixed: integer user id or false
+     */
+    public static function checkUserData($email, $password)
+    {
+        $db = Db::getConnection();
+
+        $sql = 'SELECT * FROM user WHERE email = :email AND password = :password';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
+        $result->execute();
+
+        $user = $result->fetch();
+
+        if ($user) {
+            return $user['id'];
+        }
+        return false;
+    }
+
+    /**
+     * Запоминаем пользователя
+     *
+     * @param integer $userId
+     */
+    public static function auth($userId)
+    {
+        $_SESSION['user'] = $userId;
+    }
+
+    /**
+     * Проверяем авторизировался пользователь или нет
+     */
+    public static function checkLogged()
+    {
+        //Если сессия есть, вернем индетификатор пользователя
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user'];
+        }
+
+        header("Location: /user/login");
+    }
+
+    /**
+     * Является ли пользователь гостем
+     */
+    public static function isGuest()
+    {
+        if (isset($_SESSION['user'])) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Проверка имени на кол-во введенных символов
+     *
+     * @param $name
+     *
+     * @return bool
      */
     public static function checkName($name)
     {
@@ -64,5 +129,27 @@ class User
             return true;
         }
         return false;
+    }
+
+    /**
+     * @param integer $id
+     *
+     * @return mixed user by id
+     */
+    public static function getUserById($id)
+    {
+        if ($id) {
+        $db =Db::getConnection();
+        $sql = 'SELECT * FROM user WHERE id =:id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        //Указываем, что хотим получить данные ввиде массива
+        ;$result->setFetchMode(PDO::FETCH_ASSOC);
+        $result->execute();
+
+        return $result->fetch();
+        }
     }
 }

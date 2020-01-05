@@ -8,5 +8,8 @@ return [
     'news'                            => 'news/index',   // actionIndex в NewsController
 //    'products'                        => 'product/list', //actionList в ProductController
     'user/register'                   => 'user/register',
+    'user/login'                      => 'user/login',
+    'user/logout'                      => 'user/logout',
+    'cabinet'                         => 'cabinet/index',
     ''                                => 'site/index',   //actionIndex в SiteController
 ];

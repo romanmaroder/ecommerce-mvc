@@ -16,6 +16,29 @@ class User
     }
 
     /**
+     * Редактирование данных пользователем
+     * @param integer $id
+     * @param string $name
+     * @param string $password
+     *
+     * @return bool
+     */
+    public static function edit($id, $name, $password)
+    {
+        $db = Db::getConnection();
+
+        $sql    = "UPDATE user
+                SET name = :name, password = :password
+                WHERE id = :id";
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
+
+        return $result->execute();
+    }
+
+    /**
      * Проверяем существует ли пользователь с заданными $email и $password
      *
      * @param string $email
@@ -139,17 +162,18 @@ class User
     public static function getUserById($id)
     {
         if ($id) {
-        $db =Db::getConnection();
-        $sql = 'SELECT * FROM user WHERE id =:id';
+            $db  = Db::getConnection();
+            $sql = 'SELECT * FROM user WHERE id =:id';
 
-        $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
 
-        //Указываем, что хотим получить данные ввиде массива
-        ;$result->setFetchMode(PDO::FETCH_ASSOC);
-        $result->execute();
+            //Указываем, что хотим получить данные ввиде массива
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $result->execute();
 
-        return $result->fetch();
+            return $result->fetch();
         }
     }
+
 }

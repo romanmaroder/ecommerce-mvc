@@ -1,3 +1,9 @@
+<?php
+/** @var \SiteController $navCategories
+ * @var \CatalogController $categoryId
+ */
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,15 +56,18 @@
         </div>
         <div class="nav-login login">
             <div class="login__inner">
-                <select class="login__select" onchange="window.location.href=this.options[this.selectedIndex].value">
-                    <option value="/">Welcome</option>
-                    <?php if (User::isGuest()): ?>
-                        <option value="/user/login/">Sing In (Вход)</option>
-                    <?php else: ?>
-                        <option value="/cabinet/">My Account (кабинет)</option>
-                        <option value="/user/logout/">Quit (Выход)</option>
-                    <?php endif; ?>
-                </select>
+                <label>
+                    <select class="login__select" onchange="window.location.href=this.options[this.selectedIndex].value">
+                        <?php if (User::isGuest()): ?>
+                            <option value="/">Welcome</option>
+                            <option value="/user/login/">Sing In (Вход)</option>
+                        <?php else: ?>
+                            <option value="/">Hello</option>
+                            <option value="/cabinet/">My Account (кабинет)</option>
+                            <option value="/user/logout/">Quit (Выход)</option>
+                        <?php endif; ?>
+                    </select>
+                </label>
                 <div class="login__arrow"></div>
             </div>
         </div>

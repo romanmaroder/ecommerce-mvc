@@ -117,9 +117,9 @@ $(document).ready(function () {
     function selectCategory(e) {
         e.preventDefault();
         let id = $(this).attr('data-href');
-        history.replaceState("","",id) ;
+        history.replaceState("", "", id);
 
-            $.ajax({
+        $.ajax({
             type: 'POST',
             url: "models/Product.php",
             data: {id: id},
@@ -136,89 +136,100 @@ $(document).ready(function () {
     // ==============================================================
     // Корзина
 
-    $('.cart').on('click', function (e) {
-        e.preventDefault();
-        $('.cart__mini-cart').toggleClass('cart__mini-cart--show');
-    });
+    /*  $('.cart').on('click', function (e) {
+          e.preventDefault();
+          $('.cart__mini-cart').toggleClass('cart__mini-cart--show');
+      });
 
-    let cart = {};
+      let cart = {};
 
-    console.log(cart);
+      console.log(cart);
 
-    $('.card__add-btn').on('click', addToCart);
+      $('.card__add-btn').on('click', addToCart);
 
-    $('.cart__mini-cart').on('click', '.cart__main-link', function () {
+      $('.cart__mini-cart').on('click', '.cart__main-link', function () {
 
-        let url = "/cart/";
-        location.href = url;
-        history.pushState('', '', url);
-    });
+          let url = "/cart/";
+          location.href = url;
+          history.pushState('', '', url);
+      });
 
-    function addToCart(e) {
-        // добавляем товар в корзину
-        e.preventDefault();
+      function addToCart(e) {
+          // добавляем товар в корзину
+          e.preventDefault();
 
-        let id = $(this).attr('data-id');
-        let name = $(this).attr('data-name');
-        if (cart[id] === undefined && cart[name] === undefined) {
-            // cart[id] = 1;
-            cart[name] = 1;
-        } else {
-            // cart[id]++;
-            cart[name]++;
-        }
+          let id = $(this).attr('data-id');
+          let name = $(this).attr('data-name');
+          if (cart[id] === undefined && cart[name] === undefined) {
+              // cart[id] = 1;
+              cart[name] = 1;
+          } else {
+              // cart[id]++;
+              cart[name]++;
+          }
 
+          // $.ajax({
+          //     type: "POST",
+          //     url: "cart1.php",
+          //     data: 'id=' + id + 'name=' + name,
+          //     dataType: 'json',
+          //     success: function (data) {
+          //         console.log("данные ушли " + "id=" + id + " " + "name=" + name);
+          //         let out = "";
+          //         out += data[id];
+          //         out += data[name];
+          //         $('.outer').append(out);
+          //     },
+          //     error: function () {
+          //         alert("Ошибка отправки id");
+          //     }
+          // });
+          // showMiniCart();
+          // saveCart();
+      }
+
+      function saveCart() {
+          localStorage.setItem('cart', JSON.stringify(cart));
+      }
+
+      function loadCart() {
+          //проверка записи в localStorage
+          if (localStorage.getItem('cart')) {
+              // если есть то расшифровываю
+              cart = JSON.parse(localStorage.getItem('cart'));
+              showMiniCart();
+          }
+      }
+
+      loadCart();
+
+      function showMiniCart() {
+          // показываю мини-корзину
+          let out = "";
+          let num = 0;
+
+          for (let key in cart) {
+              out += '<div class="cart__inner">' +
+                  '<span class="cart__left">' + key + '</span>' + '<span class="cart__right">' + cart[key] + 'pcs' + '</span>' +
+                  '</div>';
+              num += cart[key];
+          }
+          out += '<a href="" class="cart__main-link">To Cart</a>';
+          $('.nav-cart').attr('data-count', num);
+          $('.cart__mini-cart').html(out);
+
+      }*/
+
+    $('.card__add-btn').click(function () {
+        let id = $(this).attr("data-id");
         $.ajax({
-            type: "POST",
-            url: "cart1.php",
-            data: 'id=' + id + 'name=' + name,
-            dataType: 'json',
+            type: 'POST',
+            url: "/cart/addAjax/"+id,
             success: function (data) {
-                console.log("данные ушли " + "id=" + id + " " + "name=" + name);
-                let out = "";
-                out += data[id];
-                out += data[name];
-                $('.outer').append(out);
-            },
-            error: function () {
-                alert("Ошибка отправки id");
+                $('#cart-count').html(data);
             }
         });
-        showMiniCart();
-        saveCart();
-    }
-
-    function saveCart() {
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }
-
-    function loadCart() {
-        //проверка записи в localStorage
-        if (localStorage.getItem('cart')) {
-            // если есть то расшифровываю
-            cart = JSON.parse(localStorage.getItem('cart'));
-            showMiniCart();
-        }
-    }
-
-    loadCart();
-
-    function showMiniCart() {
-        // показываю мини-корзину
-        let out = "";
-        let num = 0;
-
-        for (let key in cart) {
-            out += '<div class="cart__inner">' +
-                '<span class="cart__left">' + key + '</span>' + '<span class="cart__right">' + cart[key] + 'pcs' + '</span>' +
-                '</div>';
-            num += cart[key];
-        }
-        out += '<a href="" class="cart__main-link">To Cart</a>';
-        $('.nav-cart').attr('data-count', num);
-        $('.cart__mini-cart').html(out);
-
-    }
-
+        return false;
+    });
 
 });

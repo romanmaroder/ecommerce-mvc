@@ -13,7 +13,7 @@
                     <li>-<?php echo $error; ?></li>
                 <?php endforeach; ?>
             </ul>
-        <? endif; ?>
+        <?php endif; ?>
         <div class="singup-form">
             <h2>Sign in</h2>
             <!--   registration form-->

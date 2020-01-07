@@ -35,12 +35,11 @@ class CartController
             $productsIds = array_keys($productsInCart);
             $products = Product::getProductsByIds($productsIds);
 
-            //Получаем стимость общую стоимость одного товара
-            $totalPriceOne = Cart::getTotalPriceOne($products);
-            //TODO добавить метод подсчета общей стоимости одного товара
 
             //Получаем общую стоимость товара
             $totalPrice = Cart::getTotalPrice($products);
+
+            $amount = Cart::getTotalPriceOne($products);
         }
 
         require_once (ROOT .'/views/cart/index.php');

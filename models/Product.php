@@ -1,6 +1,5 @@
 <?php
 
-
 class Product
 {
     const SHOW_BY_DEFAULT = 3;
@@ -129,13 +128,13 @@ class Product
         $result = $db->query($sql);
         $result->setFetchMode(PDO::FETCH_ASSOC);
 
-        $i=0;
-        while ($row= $result->fetch()){
-            $products[$i]['id'] = $row['id'];
-            $products[$i]['name'] = $row['name'];
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $products[$i]['id']    = $row['id'];
+            $products[$i]['name']  = $row['name'];
             $products[$i]['price'] = $row['price'];
             $products[$i]['color'] = $row['color'];
-            $products[$i]['size'] = $row['size'];
+            $products[$i]['size']  = $row['size'];
             $products[$i]['image'] = $row['image'];
             $i++;
         }

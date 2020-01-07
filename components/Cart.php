@@ -80,6 +80,7 @@ class Cart
             }
         }
         return $total;
+
     }
 
     /**
@@ -87,6 +88,15 @@ class Cart
      */
     public static function getTotalPriceOne($products)
     {
+        $productsInCart = self::getProducts();
+
+        if ($productsInCart) {
+
+                foreach ($products as $product) {
+                    $amount[] = $product['price'] * $productsInCart[$product['id']];
+                }
+        }
+        return $amount;
         //TODO Общая стоимость одного товара
     }
 }

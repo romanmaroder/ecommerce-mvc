@@ -29,6 +29,9 @@
     <!--Стили для корзины-->
     <link rel="stylesheet" href="/template/css/cart.css" />
 
+	<!--Стили для форм-->
+	<link rel="stylesheet" href="/template/css/form.css" />
+
     <title>Главная</title>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=cyrillic"/>
@@ -64,6 +67,7 @@
                         <?php if (User::isGuest()): ?>
                             <option value="/">Welcome</option>
                             <option value="/user/login/">Sing In (Вход)</option>
+                            <option value="/user/register/">Registration (регистрация)</option>
                         <?php else: ?>
                             <option value="/">Hello</option>
                             <option value="/cabinet/">My Account (кабинет)</option>

@@ -7,39 +7,36 @@
 
 ?>
 
-<section>
-    <div class="container">
-
+<section class="form-block">
+	<div class="container">
         <?php if ($result) : ?>
-            <p>Data edited</p>
+			<p>Data edited</p>
         <?php else: ?>
-            <?php if (isset($errors) && is_array($errors)): ?>
-                <ul>
-                    <?php foreach ($errors as $error): ?>
-                        <li>-<?php echo $error; ?></li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
+			<h1 class="form-block__title">Data Editing</h1>
 
-            <div class="singup-form">
-                <h2>Data Editing</h2>
-                <!--   registration form-->
-                <form action="#" method="post">
-                    <label for="">
-                        <input type="text" name="name" placeholder="Name" value="<?php echo $name; ?>">
-                    </label>
-                    <label for="">
-                        <input type="password" name="password" placeholder="Password"
-                               value="<?php echo $password; ?>">
-                    </label>
-                    <label for="">
-                        <input type="submit" name="submit" value="Save">
-                    </label>
-                </form>
-                <!-- // registration form-->
-            </div>
+            <?php if (isset($errors) && is_array($errors)): ?>
+				<ul class="form-block__errors errors">
+                    <?php foreach ($errors as $error): ?>
+						<li class="errors__item">-<?php echo $error; ?></li>
+                    <?php endforeach; ?>
+				</ul>
+            <?php endif; ?>
+			<form class="form" method="POST" action="#">
+				<label class="form__label" for="name"> Change your name
+					<input class="form__input-elem" type="text" name="name" required="required" placeholder="Name"
+						   value="<?php echo $name; ?>" id="name" />
+				</label>
+				<label class="form__label" for="password"> Change your password
+					<input class="form__input-elem" type="password" name="password" required="required"
+						   placeholder="Password" value="<?php echo $password; ?>" id="password" />
+				</label>
+				<label class="form__label" for="submit">
+					<input class="btn btn__form" type="submit" name="submit" value="Save" id="submit" />
+				</label>
+			</form>
+
         <?php endif; ?>
-    </div>
+	</div>
 </section>
 
 

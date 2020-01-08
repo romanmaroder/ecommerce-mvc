@@ -37,7 +37,12 @@
             </div>
             <div class="footer__column">
                 <div class="footer__title">SIGN UP</div>
-                <form class="footer-form" action="" method="POST"></form><input class="footer__input footer__input--padding" type="email" placeholder="duecreation@gmail.com" name="email" /><input class="footer__input" type="password" placeholder="password" name="password" /><button class="btn btn__footer" type="submit">Go!</button>
+                <form class="footer__form" action="" method="POST">
+                    <input class="footer__input footer__input--padding" type="email" placeholder="duecreation@gmail.com" name="email" />
+                    <input class="footer__input" type="password" placeholder="password" name="password" />
+                    <button class="btn btn__form btn__footer" type="submit">Go!</button>
+				</form>
+
             </div>
         </div>
         <div class="footer__row">

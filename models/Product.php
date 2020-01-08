@@ -2,7 +2,7 @@
 
 class Product
 {
-    const SHOW_BY_DEFAULT = 3;
+    const SHOW_BY_DEFAULT = 6;
 
     /**
      * Returns an array of products
@@ -80,7 +80,7 @@ class Product
      * @return mixed
      */
 
-    public static function getProductById($id)
+    public static function getProductsById($id)
     {
         $id = intval($id);
         if ($id) {

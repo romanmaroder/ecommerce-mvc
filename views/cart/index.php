@@ -4,8 +4,8 @@
     <main class="content">
         <section class="cart-block">
             <div class="container">
-                <h1 class="cart-block__title title" data-js-empty="data-js-empty">basket</h1>
                 <?php if ($productsInCart): ?>
+					<h1 class="cart-block__title title" data-js-empty="data-js-empty">Basket</h1>
                     <ul class="cart-block__inner cart-inner" data-js-goods-list="data-js-goods-list">
                         <li class="cart-inner__head cart-head">
                             <div class="cart-head__item">ITEM</div>
@@ -16,8 +16,8 @@
                         </li>
                         <hr/>
                         <?php foreach ($products as $product): ?>
-                            <li class="cart-inner__goods goods" data-id=""><span class="goods__close"
-                                                                                 data-js-close="data-js-close">X</span>
+                            <li class="cart-inner__goods goods" data-id="">
+								<a href="/cart/delete/<?php echo $product['id'];?>" class="goods__close" data-js-close="data-js-close">X</a>
                                 <div class="goods__item goods__item--img">
                                     <img src="<?php echo $product['image'] ;?>"/>
                                 </div>
@@ -37,11 +37,14 @@
                         <?php endforeach; ?>
                     </ul>
                     <div class="cart-block__btn">
-                        <div class="btn btn__clear" data-js-goods-clear="data-js-goods-clear">Clear</div>
+                        <a href="/cart/clear" class="btn btn__clear" data-js-goods-clear="data-js-goods-clear">Clear</a>
                         <div class="btn btn__total" data-js-goods-total="data-js-goods-total">SUBTOTAL : $<?php echo $totalPrice; ?></div>
                     </div>
-                    <a class="cart-block__center btn btn__continue" href="view.html">CONTINUE SHOPPING</a>
-                <?php endif; ?>
+					<a href="/cart/checkout" class="cart-block__center btn btn__cart btn__cart--checkout" >Checkout</a>
+                <?php else:; ?>
+				<h1 class="cart-block__title title" data-js-empty="data-js-empty">Your Basket is empty</h1>
+			<?php endif;?>
+				<a class="cart-block__center btn btn__cart" href="/">Continue shopping</a>
             </div>
         </section>
     </main>

@@ -123,7 +123,10 @@
         <div class="container">
             <div class="subscribe__title title">Subscribe To Our Newsletter</div>
             <div class="subscribe__subtitle subtitle">Only our latest news to send your email addre</div>
-            <form class="subscribe__form form"><input class="form__input" type="email" placeholder="Enter your email address" name="email" /><button class="form__button btn__form-subscribe">Subscribe</button></form>
+            <form class="subscribe__form ">
+				<input class="form__input" type="email" placeholder="Enter your email address" name="email" />
+				<button class="form__button btn__form-subscribe">Subscribe</button>
+			</form>
         </div>
     </section>
     <section class="news">

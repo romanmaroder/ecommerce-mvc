@@ -49,7 +49,7 @@
             <li class="menu__item"><a class="menu__link" href="/">Home</a></li>
             <?php foreach ($navCategories as $category): ?>
                 <li class="menu__item">
-                    <a class="menu__link<?php if ($categoryId == $category['cat_id']) echo '--active'; ?>"
+                    <a class="menu__link<?php if ($categoryId == $category['cat_id']) echo ' menu__link--active'; ?>"
                        href="/category/<?php echo $category['cat_id'] ?>"><?php echo $category['category_name'] ?></a>
                 </li>
             <?php endforeach; ?>
@@ -57,7 +57,8 @@
         </ul>
         <div class="nav-cart cart">
             <span id="cart-count" class="cart__count"><?php echo Cart::countItems();?></span>
-            <a href="/cart/"><img src="/template/images/nav/header_cart.png" alt="cart" title="Cart"/></a>
+            <a href="/cart/">
+				<img src="/template/images/nav/header_cart.png" alt="cart" title="Cart"/></a>
             <div class="cart__mini-cart"></div>
         </div>
         <div class="nav-login login">

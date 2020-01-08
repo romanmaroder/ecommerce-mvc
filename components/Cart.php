@@ -37,6 +37,24 @@ class Cart
     }
 
     /**
+     * Удаляем товар с указаным id из корзины
+     *
+     * @param integer $id товара
+     */
+    public static function deleteProduct($id)
+    {
+        //Получаем массив с индетификаторами и кол-ом товара в корзине
+        $productsInCart = self::getProducts();
+
+        //Удаляем из массива товар с указанным id
+        unset($productsInCart[$id]);
+
+        //Записываем массив товаров с удаленным элементом в сессию
+        $_SESSION['products'] = $productsInCart;
+
+    }
+
+    /**
      * Подсчет кол-ва товаров в корзине (в сессии)
      *
      * @return integer
@@ -67,6 +85,10 @@ class Cart
 
     /**
      * Получаем общую стоимость товара
+     *
+     * @param $products
+     *
+     * @return float|int
      */
     public static function getTotalPrice($products)
     {
@@ -84,19 +106,13 @@ class Cart
     }
 
     /**
-     * Получаем общую стоимость одного товара
+     * Очищаем сессию
      */
-    public static function getTotalPriceOne($products)
+    public static function clear()
     {
-        $productsInCart = self::getProducts();
-
-        if ($productsInCart) {
-
-                foreach ($products as $product) {
-                    $amount[] = $product['price'] * $productsInCart[$product['id']];
-                }
+        if (isset($_SESSION['products'])) {
+            unset($_SESSION['products']);
         }
-        return $amount;
-        //TODO Общая стоимость одного товара
     }
+
 }

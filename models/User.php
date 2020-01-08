@@ -17,6 +17,7 @@ class User
 
     /**
      * Редактирование данных пользователем
+     *
      * @param integer $id
      * @param string $name
      * @param string $password
@@ -131,6 +132,22 @@ class User
     public static function checkEmail($email)
     {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Проверяем телефон на валидность
+     *
+     * @param integer $phone
+     *
+     * @return bool
+     */
+    public static function checkPhone($phone)
+    {
+        $pattern = "^\+?[378]?\d{1}[-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$^";
+        if (preg_match($pattern,  $phone)) {
             return true;
         }
         return false;

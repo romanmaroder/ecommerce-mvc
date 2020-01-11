@@ -1,6 +1,6 @@
 <?php
-include_once ROOT . '/models/Category.php';
-include_once ROOT . '/models/Product.php';
+//include_once ROOT . '/models/Category.php';
+//include_once ROOT . '/models/Product.php';
 
 class ProductController
 {
@@ -9,7 +9,7 @@ class ProductController
         $navCategories = array();
         $navCategories = Category::getNavCategoryList();
 
-        $product = Product::getProductById($productId);
+        $product = Product::getProductsById($productId);
 
         require_once(ROOT . '/views/product/view.php');
 

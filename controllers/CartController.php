@@ -26,6 +26,7 @@ class CartController
     {
         //Добавляем товары в корзину
         echo Cart::addProduct($id);
+
         return true;
     }
 

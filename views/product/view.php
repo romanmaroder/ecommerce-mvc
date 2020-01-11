@@ -39,7 +39,8 @@
                                 <option value="" hidden>Sizes</option>
                                 <option value="Sizes"><?php echo $product['size'];?></option>
                             </select>
-                        </div><button class="btn btn__form-details">Add to cart</button>
+                        </div>
+						<a href="/cart/add/<?php echo $product['id'];?>" class="btn btn__form-details">Add to cart</a>
                     </form>
                 </div>
             </div>

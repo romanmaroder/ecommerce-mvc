@@ -16,8 +16,8 @@
                         </li>
                         <hr/>
                         <?php foreach ($products as $product): ?>
-                            <li class="cart-inner__goods goods" data-id="">
-								<a href="/cart/delete/<?php echo $product['id'];?>" class="goods__close" data-js-close="data-js-close">X</a>
+                            <li class="cart-inner__goods goods" >
+								<a href="/cart/delete/<?php echo $product['id'];?>" class="goods__close card__close--btn" data-id="<?php echo $product['id'];?>">X</a>
                                 <div class="goods__item goods__item--img">
                                     <img src="<?php echo $product['image'] ;?>"/>
                                 </div>
@@ -44,7 +44,7 @@
                 <?php else:; ?>
 				<h1 class="cart-block__title title" data-js-empty="data-js-empty">Your Basket is empty</h1>
 			<?php endif;?>
-				<a class="cart-block__center btn btn__cart" href="/">Continue shopping</a>
+				<a class="cart-block__center btn btn__cart" href="" onclick="history.go(-1); return false;">Continue shopping</a>
             </div>
         </section>
     </main>

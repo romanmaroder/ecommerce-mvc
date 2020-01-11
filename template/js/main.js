@@ -104,7 +104,7 @@ $(document).ready(function () {
         let id = $(this).attr('data-id');
         if (!block.is(e.target) // проверка условия если клик был не по нашему блоку
             && block.has(e.target).length === 0) { // проверка условия если клик не по его дочерним элементам
-            let url = "?option=details&cat_id=6&id=" + id;
+            let url = "http://ecommerce-mvc/product/" + id;
             $(location).attr('href', url);
         }
     });
@@ -196,16 +196,20 @@ $(document).ready(function () {
 
     }
 */
+
     $('.card__add-btn').click(function () {
         let id = $(this).attr("data-id");
         $.ajax({
             type: 'POST',
-            url: "/cart/addAjax/"+id,
+            url: "/cart/addAjax/" + id,
             success: function (data) {
                 $('#cart-count').html(data);
             }
         });
         return false;
     });
+
+
+
 
 });

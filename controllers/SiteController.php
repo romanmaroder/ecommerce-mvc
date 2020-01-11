@@ -5,7 +5,7 @@ include_once(ROOT . '/models/Product.php');
 
 class SiteController
 {
-    public function actionIndex()
+    public function actionIndex($categoryId = 1)
     {
         $categories = array();
         $categories = Category::getCategoriesList();
@@ -16,10 +16,17 @@ class SiteController
         $latestProducts = array();
         $latestProducts = Product::getLatestProducts(6);
 
+       $productsByCategory = array();
+       $productsByCategory = Product::getProductsByCategory($categoryId);
+
         require_once(ROOT . '/views/site/index.php');
 
         return true;
     }
+
+
+
+
 
     public function actionContact()
     {
@@ -50,7 +57,7 @@ class SiteController
                 $result     = true;
             }
         }
-        require_once (ROOT .'/views/site/contact.php');
+        require_once(ROOT . '/views/site/contact.php');
 
         return true;
     }

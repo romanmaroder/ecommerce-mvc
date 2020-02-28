@@ -1,12 +1,21 @@
 <?php
 
 
+/**
+ * Class User
+ */
 class User
 {
+    /**
+     * @param $name
+     * @param $email
+     * @param $password
+     * @return bool
+     */
     public static function register($name, $email, $password)
     {
-        $db     = Db::getConnection();
-        $sql    = "INSERT INTO user (name, email, password) VALUE (:name, :email, :password)";
+        $db = Db::getConnection();
+        $sql = "INSERT INTO user (name, email, password) VALUE (:name, :email, :password)";
         $result = $db->prepare($sql);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
@@ -18,7 +27,7 @@ class User
     /**
      * Редактирование данных пользователем
      *
-     * @param integer $id
+     * @param int $id
      * @param string $name
      * @param string $password
      *
@@ -28,7 +37,7 @@ class User
     {
         $db = Db::getConnection();
 
-        $sql    = "UPDATE user
+        $sql = "UPDATE user
                 SET name = :name, password = :password
                 WHERE id = :id";
         $result = $db->prepare($sql);
@@ -69,7 +78,7 @@ class User
     /**
      * Запоминаем пользователя
      *
-     * @param integer $userId
+     * @param int $userId
      */
     public static function auth($userId)
     {
@@ -140,14 +149,14 @@ class User
     /**
      * Проверяем телефон на валидность
      *
-     * @param integer $phone
+     * @param int $phone
      *
      * @return bool
      */
     public static function checkPhone($phone)
     {
         $pattern = "^\+?[378]?\d{1}[-\(]?\d{3}\)?-?\d{3}-?\d{2}-?\d{2}$^";
-        if (preg_match($pattern,  $phone)) {
+        if (preg_match($pattern, $phone)) {
             return true;
         }
         return false;
@@ -155,12 +164,16 @@ class User
 
     /**
      * Проверка E-mail на наличие
+     *
+     * @param $email <p>E-mail пользователя</p>
+     *
+     * @return bool
      */
     public static function checkEmailExist($email)
     {
         $db = Db::getConnection();
 
-        $sql    = "SELECT count(*) FROM user WHERE email = :email";
+        $sql = "SELECT count(*) as count FROM user WHERE email = :email";
         $result = $db->prepare($sql);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->execute();
@@ -172,14 +185,14 @@ class User
     }
 
     /**
-     * @param integer $id
+     * @param int $id
      *
      * @return mixed user by id
      */
     public static function getUserById($id)
     {
         if ($id) {
-            $db  = Db::getConnection();
+            $db = Db::getConnection();
             $sql = 'SELECT * FROM user WHERE id =:id';
 
             $result = $db->prepare($sql);
@@ -191,6 +204,41 @@ class User
 
             return $result->fetch();
         }
+    }
+
+
+    /**
+     * @param $email
+     * @return bool
+     */
+    public static function getSubscribe($email, $subscribe = 1)
+    {
+        if ($email) {
+            $db = Db::getConnection();
+
+            $sql = "SELECT count(*) as count FROM user WHERE email = :email";
+            $result = $db->prepare($sql);
+            $result->bindParam(':email', $email, PDO::PARAM_STR);
+            $result->execute();
+
+            if ($result->fetchColumn()) {
+                $sql = "UPDATE user
+                SET subscribe = 1
+                WHERE email = :email";
+                $result = $db->prepare($sql);
+                $result->bindParam(':email', $email, PDO::PARAM_STR);
+                $result->execute();
+            } else {
+                $db = Db::getConnection();
+                $sql = "INSERT INTO user (email, subscribe) VALUE (:email, :subscribe)";
+                $result = $db->prepare($sql);
+                $result->bindParam(':email', $email, PDO::PARAM_STR);
+                $result->bindParam(':subscribe', $subscribe, PDO::PARAM_STR);
+                $result->execute();
+            }
+        }
+
+
     }
 
 }

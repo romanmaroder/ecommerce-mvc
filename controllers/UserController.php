@@ -1,8 +1,14 @@
 <?php
 
 
+/**
+ * Class UserController
+ */
 class UserController
 {
+    /**
+     * @return bool
+     */
     public function actionRegister()
     {
         $navCategories = array();
@@ -46,6 +52,9 @@ class UserController
         return true;
     }
 
+    /**
+     * @return bool
+     */
     public function actionLogin()
     {
         $navCategories = array();
@@ -87,6 +96,7 @@ class UserController
 
         return true;
     }
+
 
     /**
      * Удаляем пользователя из сессии

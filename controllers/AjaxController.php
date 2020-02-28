@@ -3,12 +3,11 @@
 
 class AjaxController
 {
-    public function actionPost($categoryId)
+    public function actionIndex($categoryId)
     {
-        $post = Ajax::getPost($categoryId);
+        $ajaxProd = Ajax::getAjaxProducts($categoryId);
 
-        echo $post;
-
+        require_once(ROOT . 'views/site/ajax.php');
         return true;
     }
 }

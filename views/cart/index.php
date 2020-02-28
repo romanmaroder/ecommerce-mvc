@@ -44,7 +44,7 @@
                 <?php else:; ?>
 				<h1 class="cart-block__title title" data-js-empty="data-js-empty">Your Basket is empty</h1>
 			<?php endif;?>
-				<a class="cart-block__center btn btn__cart" href="" onclick="history.go(-1); return false;">Continue shopping</a>
+				<a class="cart-block__center btn btn__cart" href="/">Continue shopping</a>
             </div>
         </section>
     </main>

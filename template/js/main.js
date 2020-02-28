@@ -99,9 +99,27 @@ $(document).ready(function () {
     // });
     // location to product-details
 
-    $('.card').click(function (e) { // отслеживаем событие клика по веб-документу
-        let block = $(".card__add-btn"); // определяем элемент, к которому будем применять условия (можем указывать ID, класс либо любой другой идентификатор элемента)
-        let id = $(this).attr('data-id');
+    $('.products__content').on('click', 'li', function (e) { // отслеживаем событие клика по веб-документу
+        let block = $(this).find('.card__add-btn'); // определяем элемент, к которому будем применять условия (можем указывать ID, класс либо любой другой идентификатор элемента)
+        let id = $(this).find('.card__add-btn').attr('data-id');
+        if (!block.is(e.target) // проверка условия если клик был не по нашему блоку
+            && block.has(e.target).length === 0) { // проверка условия если клик не по его дочерним элементам
+            let url = "http://ecommerce-mvc/product/" + id;
+            $(location).attr('href', url);
+        }
+    });
+    $('.view-grid').on('click', 'li', function (e) { // отслеживаем событие клика по веб-документу
+        let block = $(this).find('.card__add-btn'); // определяем элемент, к которому будем применять условия (можем указывать ID, класс либо любой другой идентификатор элемента)
+        let id = $(this).find('.card__add-btn').attr('data-id');
+        if (!block.is(e.target) // проверка условия если клик был не по нашему блоку
+            && block.has(e.target).length === 0) { // проверка условия если клик не по его дочерним элементам
+            let url = "http://ecommerce-mvc/product/" + id;
+            $(location).attr('href', url);
+        }
+    });
+    $('.view-list').on('click', 'li', function (e) { // отслеживаем событие клика по веб-документу
+        let block = $(this).find('.card__add-btn'); // определяем элемент, к которому будем применять условия (можем указывать ID, класс либо любой другой идентификатор элемента)
+        let id = $(this).find('.card__add-btn').attr('data-id');
         if (!block.is(e.target) // проверка условия если клик был не по нашему блоку
             && block.has(e.target).length === 0) { // проверка условия если клик не по его дочерним элементам
             let url = "http://ecommerce-mvc/product/" + id;
@@ -186,7 +204,8 @@ $(document).ready(function () {
 
         for (let key in cart) {
             out += '<div class="cart__inner">' +
-                '<span class="cart__left">' + key + '</span>' + '<span class="cart__right">' + cart[key] + 'pcs' + '</span>' +
+                '<span class="cart__left">' + key + '</span>' + '<span class="cart__right">' + cart[key] + 'pcs' +
+                '</span>' +
                 '</div>';
             num += cart[key];
         }
@@ -196,6 +215,18 @@ $(document).ready(function () {
 
     }
 */
+
+
+// Добавляем класс к ссылкам меню PRODUCTS COLLECTIONS
+
+    $('.filter__link').on('click', function (e) {
+        e.preventDefault();
+        $('.filter__link').removeClass('filter__link--active');
+        $(this).addClass('filter__link--active');
+    });
+
+
+// Обновляем кол-во товара в мини-корзине
 
     $('.card__add-btn').click(function () {
         let id = $(this).attr("data-id");
@@ -210,6 +241,53 @@ $(document).ready(function () {
     });
 
 
+//Вывод товара на главной по категории
+
+    $('.filter__link').on('click', function (e) {
+
+        let link = $(this).attr('data-cat_id');
+
+        $.ajax({
+            type: "POST",
+            url: "/site/ajax/" + link,
+            beforeSend: function () {
+                console.log(link);
+            },
+            success: function (data) {
+                $('.products__content').html(data);
+            }
+        });
+        return false;
+    });
 
 
+//Добавление товара на главной по кнопке MORE
+
+    $('.container').on('click','.btn__product',function (e) {
+        let link = $('.filter__link--active').attr('data-cat_id');
+        let page = $('.btn__product').attr('data-page');
+
+        $.ajax({
+            type: "POST",
+            url: "/site/ajax/" + link + '/page-' + page,
+            data: {page:page},
+            beforeSend: function () {
+                console.log(link);
+            },
+            success: function (data) {
+                $('.products__content').append(data);
+                $('.btn__product').attr('data-page',+ page +1);
+
+            },
+            error:function (data) {
+                $('.products__content').html(data);
+            }
+        });
+        return false;
+    });
+
+// Убираем стили на главной
+    if($('main').hasClass('home')){
+        $('.card').css({'margin-left':'auto','margin-right':'auto'});
+    }
 });

@@ -15,7 +15,7 @@
 			</a>
 		</div>
 	</header>
-	<main class="content">
+	<main class="content home">
 		<section class="featured">
 			<div class="container">
 				<div class="featured__title title">Featured Items</div>
@@ -118,14 +118,16 @@
 					<ul class="filter__list">
                         <?php foreach ($categories as $categoryItem) : ?>
 							<li class="filter__item">
-								<a class="filter__link<?php if ($categoryId == $categoryItem['cat_id']) echo ' filter__link--active'; ?>"
-								   href="/popular/<?php echo $categoryItem['cat_id']; ?>" data-cat_id="/popular/<?php echo $categoryItem['cat_id']; ?>">
+								<a class="filter__link <?php if ($categoryId == $categoryItem['cat_id']) echo ' filter__link--active'; ?>"
+								   href="/popular/<?php echo $categoryItem['cat_id']; ?>"
+								   data-cat_id="<?php echo $categoryItem['cat_id']; ?>">
                                     <?php echo $categoryItem['category_name']; ?></a>
 							</li>
                         <?php endforeach; ?>
 					</ul>
 				</div>
-				<ul class="products__content">
+
+				<ul class="products__content" data-count="<? /*php echo $total;*/ ?>">
                     <?php foreach ($productsByCategory as $product) : ?>
 						<li class="card card--bg" data-id="<?php echo $product['id']; ?>">
 							<a class="card__link card__add-btn" href="/cart/add/<?php echo $product['id']; ?>"
@@ -143,18 +145,28 @@
 						</li>
                     <?php endforeach; ?>
 				</ul>
-				<div class="products__button-block">
-					<button class="products__btn btn__product">MORE</button>
-				</div>
+
+				<!--				<div class="products__button-block">-->
+				<!--                    --><?php //echo $pagination->get();?>
+				<!---->
+				<!--					<button class="products__btn btn__product" data-cat_id="" data-page="1">MORE</button>-->
+				<!--				</div>-->
 			</div>
 		</section>
 		<section class="subscribe content">
 			<div class="container">
 				<div class="subscribe__title title">Subscribe To Our Newsletter</div>
 				<div class="subscribe__subtitle subtitle">Only our latest news to send your email addre</div>
-				<form class="subscribe__form ">
-					<input class="form__input" type="email" placeholder="Enter your email address" name="email" />
-					<button class="form__button btn__form-subscribe">Subscribe</button>
+                <?php if (isset($errors) && is_array($errors)): ?>
+					<ul class="form-block__errors errors">
+                        <?php foreach ($errors as $error): ?>
+							<li class="errors__item">-<?php echo $error; ?></li>
+                        <?php endforeach; ?>
+					</ul>
+                <?php endif; ?>
+				<form class="subscribe__form " method="POST">
+					<input class="form__input" type="text" placeholder="Enter your email address" name="emailSubscribe" />
+					<input class="form__button btn__form-subscribe" type="submit" value="Subscribe">
 				</form>
 			</div>
 		</section>
@@ -163,50 +175,20 @@
 				<div class="news__title title">Latest New’s</div>
 				<div class="news__subtitle subtitle">Read latests new’s in our blog</div>
 				<div class="news__content">
-					<div class="news__column news__column--one">
+                    <?php foreach ($newsList as $news): ?>
 						<article class="article-news">
-							<div class="article-news__img"><img src="/template/images/news/indus.jpg" alt="news"
-																title="news" /></div>
+							<div class="article-news__img" style="background : url(<?php echo $news['preview']; ?>)">
+							</div>
 							<div class="article-news__content">
-								<div class="article-news__title article-news__title--big">Top kamla of this year!</div>
-								<div class="article-news__text">Ashole uni kamla noy uni VONDU & uni dami pc use kore so
-									unar digayn o dami. Typesetting industry. Lorem Ipsum has been the industry's
-									standard dummy text ever since the 1500s, when an unknown printer took a galley of
-									type and scrambled it to make a type specimen book. It has survived not only five
-									centuries, but also the leap into electronic typesetting remaining essentially
-									unchanged. It was popularised in the 1960s with the release of Letraset sheets
-									containing Lorem Ipsum passages, and more recently with desktop
+								<div class="article-news__title article-news__title--big"><?php echo $news['title']; ?></div>
+								<div class="article-news__text"><?php echo $news['short_content']; ?>
 								</div>
-								<a class="article-news__btn">READ MORE</a>
+                                <?php if ($news['type'] == 1): ?>
+									<?php echo'<a class="article-news__btn">READ MORE</a>';?>
+                                <?php endif; ?>
 							</div>
 						</article>
-					</div>
-					<div class="news__column">
-						<article class="article-news">
-							<div class="article-news__img"><img src="/template/images/news/glass_man.jpg" alt="news"
-																title="news" /></div>
-							<div class="article-news__content">
-								<div class="article-news__title">Specialize in Mobile and Web UI/UX!</div>
-								<div class="article-news__text">Kotha sotto blv it or not, is simply dummy text of the
-									printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy
-									text. ever. since the 1500s, when an unknown printer took a galley of type and
-									scrambled it to make a type specimen book.
-								</div>
-							</div>
-						</article>
-						<article class="article-news">
-							<div class="article-news__img"><img src="/template/images/news/cap.jpg" alt="news"
-																title="news" /></div>
-							<div class="article-news__content">
-								<div class="article-news__title">Best photo of this month!</div>
-								<div class="article-news__text">Kotha sotto blv it or not, is simply dummy text of the
-									printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy
-									text. ever. since the 1500s, when an unknown printer took a galley of type and
-									scrambled it to make a type specimen book.
-								</div>
-							</div>
-						</article>
-					</div>
+                    <?php endforeach; ?>
 				</div>
 			</div>
 		</section>

@@ -44,6 +44,7 @@
          *
          * @param  $categoryId <p>Индитификатор категории</p>
          *
+         * @param int $page
          * @return array <p>Список товаров по выбранной категории</p>
          */
 
@@ -97,7 +98,7 @@
                     $result = $db->query("SELECT id, name, price, image, description, content FROM product  ORDER BY RAND()  LIMIT " . $count . " ");
                 } else {
                     $result = $db->query("SELECT id, name, price, image, description, content FROM product WHERE 
-                       cat_id = '" . $categoryId . "' ORDER BY id  LIMIT " . $count . "");
+                       cat_id = '" . $categoryId . "' ORDER BY id  LIMIT " . $count . " ");
                 }
 
 
@@ -224,5 +225,34 @@
             $result = $db->prepare($sql);
             $result->bindParam('id', $id, PDO::PARAM_INT);
             return $result->execute();
+        }
+
+        /**
+         * Добавляет новый товар
+         * @param array $options <p>Массив с информацией о товаре</p>
+         * @return integer <p> id добавленной в таблицу записи</p>
+         */
+        public static function createProduct($options)
+        {
+            //Соединение с БД
+            $db = Db::getConnection();
+
+            //Запрос в БД
+            $sql = "INSERT INTO product (name, description, content, price, cat_id) 
+                                VALUES  (:name,:description,:content, :price,:cat_id)";
+
+            //Получаем и возвращаем результат
+            $result = $db->prepare($sql);
+            $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+            $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+            $result->bindParam(':content', $options['content'], PDO::PARAM_STR);
+            $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
+            $result->bindParam(':cat_id', $options['cat_id'], PDO::PARAM_INT);
+            if ($result->execute()) {
+                //если запрос выполнен успешно, возвращаем id добавленной записи
+                return  $db->lastInsertId();
+            }
+            //иначе вернем 0
+            return 0;
         }
     }

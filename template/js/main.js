@@ -290,4 +290,7 @@ $(document).ready(function () {
     if($('main').hasClass('home')){
         $('.card').css({'margin-left':'auto','margin-right':'auto'});
     }
+
+
+
 });

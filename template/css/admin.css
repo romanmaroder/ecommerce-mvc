@@ -101,6 +101,7 @@ html {
     color:#e67e22 ;
 }
 
+/*Хлебные крошки*/
 .breadcrumb {
     display: flex;
     list-style: none;
@@ -132,6 +133,7 @@ html {
     letter-spacing: 0.5px;
 }
 
+/*Кнопки */
 .admin__btn-add {
     text-decoration: none;
     color: #7f8c8d;
@@ -152,6 +154,23 @@ html {
     color: #e67e22;
 }
 
+.admin__btn-save {
+    color: #fff;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+    border: none;
+    background: #27ae60;
+    padding: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: .3s linear;
+    width: fit-content;
+}
+.admin__btn-save:hover {
+    background: #2ecc71;
+    color: #34495e;
+}
+
 .admin__btn-delete {
     color: #34495e;
     letter-spacing: 0.5px;
@@ -166,4 +185,87 @@ html {
 .admin__btn-delete:hover {
     background: #e74c3c;
     color: #fff;
+}
+
+/*Форма товара*/
+.admin__form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.admin__label {
+    font-size: 16px;
+    color: #7f8c8d;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.admin__input {
+    font-size: 14px;
+    color: #34495e;
+    font-weight: 500;
+    margin-bottom: 15px;
+    height: 25px;
+    max-width: 400px;
+    line-height: 25px;
+    padding-left: 10px;
+    background:#ecf0f1;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0, 0.5);
+}
+.admin__textarea {
+    font-size: 14px;
+    color: #34495e;
+    font-weight: 500;
+    margin-bottom: 15px;
+    padding-left: 10px;
+    padding-top: 10px;
+    background:#ecf0f1;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0, 0.5);
+    resize: vertical;
+    height: 60px;
+    max-height: 90px;
+    min-height: 40px;
+    max-width: 400px;
+}
+.admin__select {
+    font-size: 14px;
+    color: #34495e;
+    font-weight: 500;
+    margin-bottom: 15px;
+    height: 25px;
+    max-width: 410px;
+    line-height: 25px;
+    padding-left: 10px;
+    background:#ecf0f1;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0, 0.5);
+}
+.admin__input-hide {
+    display: none;
+}
+.admin__input-file {
+    border: none;
+    margin-left: 10px;
+}
+.admin__label-file {
+    font-size: 14px;
+    color: #34495e;
+    font-weight: 500;
+    margin-bottom: 15px;
+    height: 25px;
+    max-width: 400px;
+    line-height: 25px;
+    padding-left: 10px;
+    background:#ecf0f1;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px rgba(0,0,0, 0.5);
 }

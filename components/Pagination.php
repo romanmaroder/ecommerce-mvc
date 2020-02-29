@@ -70,8 +70,8 @@ class Pagination
 
     /**
      *  Для вывода ссылок
-     * 
-     * @return HTML-код со ссылками навигации
+     *
+     * @return string HTML-код со ссылками навигации
      */
     public function get()
     {
@@ -114,9 +114,10 @@ class Pagination
 
     /**
      * Для генерации HTML-кода ссылки
-     * @param integer $page - номер страницы
-     * 
-     * @return
+     * @param int $page - номер страницы
+     *
+     * @param null $text
+     * @return string
      */
     private function generateHtml($page, $text = null)
     {
@@ -134,13 +135,13 @@ class Pagination
 
     /**
      *  Для получения, откуда стартовать
-     * 
-     * @return массив с началом и концом отсчёта
+     *
+     * @return array с началом и концом отсчёта
      */
     private function limits()
     {
         # Вычисляем ссылки слева (чтобы активная ссылка была посередине)
-        $left = $this->current_page - round($this->max / 2);
+        $left = $this->current_page - ceil($this->max / 2);
 
         # Вычисляем начало отсчёта
         $start = $left > 0 ? $left : 1;
@@ -191,7 +192,7 @@ class Pagination
     private function amount()
     {
         # Делим и возвращаем
-        return round($this->total / $this->limit);
+        return ceil($this->total / $this->limit);
     }
 
 }

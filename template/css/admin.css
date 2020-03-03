@@ -97,6 +97,12 @@ html {
     margin-bottom: 15px;
     border-spacing: 0 10px;
 }
+.admin__products tr {
+    height: 35px;
+}
+.admin__products tr:nth-child(even) {
+    background-color: #ecf0f1;
+}
 .admin__products .fa {
     color:#e67e22 ;
 }

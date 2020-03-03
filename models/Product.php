@@ -238,8 +238,8 @@
             $db = Db::getConnection();
 
             //Запрос в БД
-            $sql = "INSERT INTO product (name, description, content, price, cat_id) 
-                                VALUES  (:name,:description,:content, :price,:cat_id)";
+            $sql = "INSERT INTO product (name, description, content, price, cat_id,sub_id) 
+                                VALUES  (:name,:description,:content, :price,:cat_id,:sub_id)";
 
             //Получаем и возвращаем результат
             $result = $db->prepare($sql);
@@ -248,11 +248,44 @@
             $result->bindParam(':content', $options['content'], PDO::PARAM_STR);
             $result->bindParam(':price', $options['price'], PDO::PARAM_STR);
             $result->bindParam(':cat_id', $options['cat_id'], PDO::PARAM_INT);
+            $result->bindParam(':sub_id', $options['sub_id'], PDO::PARAM_INT);
+//            $result->bindParam(':sub_name', $options['sub_name'], PDO::PARAM_STR);
             if ($result->execute()) {
                 //если запрос выполнен успешно, возвращаем id добавленной записи
-                return  $db->lastInsertId();
+                return $db->lastInsertId();
             }
             //иначе вернем 0
             return 0;
+        }
+
+        /**
+         * Редактирует товар с указаным id
+         * @param $id <p>id выбранного товара</p>
+         * @param $options <p>опции выбранного товара</p>
+         */
+        public static function updateProductById($id, $options)
+        {
+            //Соединение с БД
+            $db = Db::getConnection();
+
+            //Запрос к БД
+            $sql = "UPDATE product
+                SET
+                    name = :name,
+                    price = :price,
+                    description = :description,
+                    content = :content,
+                    cat_id = :cat_id
+                WHERE id = :id";
+
+            //Получение и сохранение результата
+            $result = $db->prepare($sql);
+            $result->bindParam('name', $options['name'],PDO::PARAM_STR);
+            $result->bindParam('price', $options['price'],PDO::PARAM_STR);
+            $result->bindParam('description', $options['description'],PDO::PARAM_STR);
+            $result->bindParam('content', $options['content'],PDO::PARAM_STR);
+            $result->bindParam('cat_id', $options['cat_id'],PDO::PARAM_INT);
+            $result->bindParam('id', $id,PDO::PARAM_INT);
+            return $result->execute();
         }
     }

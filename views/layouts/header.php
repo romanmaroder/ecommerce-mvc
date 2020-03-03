@@ -46,14 +46,14 @@
                     class="logo__text">plore</span></div>
         <a class="nav__burger burger"><span class="burger__line"></span></a>
         <ul class="nav-menu menu">
-            <li class="menu__item"><a class="menu__link" href="/">Home</a></li>
+            <li class="menu__item"><a class="menu__link" href="/">Главная</a></li>
             <?php foreach ($navCategories as $category): ?>
                 <li class="menu__item">
                     <a class="menu__link<?php if ($categoryId == $category['cat_id']) echo ' menu__link--active'; ?>"
                        href="/category/<?php echo $category['cat_id'] ?>"><?php echo $category['category_name'] ?></a>
                 </li>
             <?php endforeach; ?>
-            <li class="menu__item"><a class="menu__link" href="/blog/">Blog</a></li>
+            <li class="menu__item"><a class="menu__link" href="/blog/">Блог</a></li>
         </ul>
         <div class="nav-cart cart">
             <span id="cart-count" class="cart__count"><?php echo Cart::countItems();?></span>

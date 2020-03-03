@@ -28,7 +28,7 @@
 
                 <?php foreach ($productList as $product): ?>
                     <tr>
-                        <td><?php echo $product['id']; ?></td>
+                        <td>#<b><?php echo $product['id']; ?></b></td>
                         <td><?php echo $product['name']; ?></td>
                         <td><?php echo $product['price']; ?> $</td>
                         <td><?php echo $product['description']; ?></td>

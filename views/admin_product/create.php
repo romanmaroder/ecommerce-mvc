@@ -1,6 +1,7 @@
 <?php
     require_once(ROOT . '/views/layouts/header_admin.php');
     /** @var AdminProductController $categoriesList */
+    /** @var AdminProductController $subCategoriesList */
 ?>
     <main class="admin__main">
         <div class="container">
@@ -40,6 +41,16 @@
                     <?php if (is_array($categoriesList)): ?>
                         <?php foreach ($categoriesList as $category): ?>
                             <option value="<?php echo $category['cat_id']; ?>"><?php echo $category['category_name']; ?></option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </select>
+
+                <label class="admin__label" for="subCategory">Подкатегория</label>
+                <select class="admin__select" name="sub_id" id="subCategory">
+                    <?php
+                        if (is_array($subCategoriesList)): ?>
+                        <?php foreach ($subCategoriesList as $subCategory): ?>
+                            <option value="<?php echo $subCategory['sub_id']; ?>"><?php echo $subCategory['sub_name']; ?></option>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </select>

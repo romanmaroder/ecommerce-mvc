@@ -2,7 +2,7 @@
 
     /**
      * Контроллер AdminSubCategoryController
-     * Управление категориями товаров в админпанели
+     * Управление подкатегориями товаров в админпанели
      */
     class AdminSubCategoryController extends AdminBase
     {
@@ -16,7 +16,7 @@
             //Проверка доступа
             self::checkAdmin();
 
-            // Получаем список товара
+            // Получаем список подкатегорий
             $subCategoriesList = Category::getSubCategoriesListAdmin();
 
             // Подключаем вид
@@ -50,7 +50,7 @@
 
                     Category::createSubCategory($name);
 
-                    //Перенаправляем пользователя на страницу управлениями товарами
+                    //Перенаправляем пользователя на страницу управлениями подкатегориями
                     header('Location: /admin/subcategory');
                 }
             }
@@ -61,7 +61,7 @@
 
         /**
          * Action для страницы "Редактирование подкатегорий"
-         * @param $id <p> id выбраного товара</p>
+         * @param $id <p> id выбраной подкатегории</p>
          * @return bool
          */
         public function actionUpdate($id)
@@ -89,8 +89,8 @@
         }
 
         /**
-         * Action для страницы "Удалить товар"
-         * @param $id
+         * Action для страницы "Удалить подкатегорию по заданному id"
+         * @param int $id <p> id подкатегории</p>
          * @return bool
          */
         public function actionDelete($id)
@@ -101,11 +101,11 @@
             // Обработка формы
             if (isset($_POST['submit'])) {
 
-                //Если форма отправлена - удаляем товар
+                //Если форма отправлена - удаляем подкатегорию
                 $subCategoriesList = Category::getSubCategoriesListAdmin();
                 Category::deleteSubCategoryById($id);
 
-                // Перенаправляем пользователя на страницу управления товарами
+                // Перенаправляем пользователя на страницу управления подкатегорию
                 header("Location: /admin/subcategory");
             }
             //Подключаем вид

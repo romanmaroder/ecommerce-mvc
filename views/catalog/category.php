@@ -263,7 +263,7 @@
 								<a class="card__link card__add-btn" href="/cart/add/<?php echo $product['id']; ?>"
 								   data-id="<?php echo $product['id']; ?>">Add to card</a>
 								<div class="card__add"></div>
-								<div class="card__img card__img--grid"><img src="<?php echo $product['image']; ?>"
+								<div class="card__img card__img--grid"><img src="<?php echo Product::getImage($product['id']); ?>"
 																			alt="<?php echo $product['name']; ?>"
 																			title="<?php echo $product['name']; ?>" />
 								</div>
@@ -277,7 +277,7 @@
                         <?php foreach ($categoryProducts as $product) : ?>
 							<li class="card card__list" data-id="<?php echo $product['id']; ?>">
 								<div class="card__img card__img--list">
-									<img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>"
+									<img src="<?php echo Product::getImage($product['id']); ?>" alt="<?php echo $product['name']; ?>"
 										 title="<?php echo $product['name']; ?>" />
 								</div>
 								<div class="card__content card__content--list">

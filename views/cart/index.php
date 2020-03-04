@@ -19,7 +19,7 @@
                             <li class="cart-inner__goods goods" >
 								<a href="/cart/delete/<?php echo $product['id'];?>" class="goods__close card__close--btn" data-id="<?php echo $product['id'];?>">X</a>
                                 <div class="goods__item goods__item--img">
-                                    <img src="<?php echo $product['image'] ;?>"/>
+                                    <img src="<?php echo Product::getImage($product['id']); ?>"/>
                                 </div>
                                 <div class="goods__item goods__item--desc desc-inner">
                                     <div class="desc-inner__title"><?php echo $product['name'] ;?></div>

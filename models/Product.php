@@ -22,7 +22,7 @@
 
             $productList = array();
 
-            $result = $db->query("SELECT id, name, description, price, image, content FROM product  ORDER BY id ASC 
+            $result = $db->query("SELECT id, name, description, price, content FROM product  ORDER BY id ASC 
                             LIMIT " . $count . " ");
 
             $i = 0;
@@ -33,7 +33,6 @@
                 $productList[$i]['description'] = $row['description'];
                 $productList[$i]['content'] = $row['content'];
                 $productList[$i]['price'] = $row['price'];
-                $productList[$i]['image'] = $row['image'];
                 $i++;
             }
             return $productList;
@@ -61,10 +60,10 @@
                 $products = array();
 
                 if ($categoryId == 1) {
-                    $result = $db->query("SELECT id, cat_id, name, price, image, description, content FROM product
+                    $result = $db->query("SELECT id, cat_id, name, price, description, content FROM product
                         ORDER BY RAND()  LIMIT " . self::SHOW_BY_DEFAULT . "  OFFSET  $offset ");
                 } else {
-                    $result = $db->query("SELECT id, name, price, image, description, content FROM product WHERE 
+                    $result = $db->query("SELECT id, name, price, description, content FROM product WHERE 
                        cat_id = '" . $categoryId . "' ORDER BY id ASC LIMIT  " . self::SHOW_BY_DEFAULT . "  OFFSET  $offset ");
                 }
                 $i = 0;
@@ -72,7 +71,6 @@
                     $products[$i]['id'] = $row['id'];
                     $products[$i]['name'] = $row['name'];
                     $products[$i]['price'] = $row['price'];
-                    $products[$i]['image'] = $row['image'];
                     $products[$i]['description'] = $row['description'];
                     $products[$i]['content'] = $row['content'];
                     $i++;
@@ -95,9 +93,9 @@
                 $products = array();
 
                 if ($categoryId == 1) {
-                    $result = $db->query("SELECT id, name, price, image, description, content FROM product  ORDER BY RAND()  LIMIT " . $count . " ");
+                    $result = $db->query("SELECT id, name, price, description, content FROM product  ORDER BY RAND()  LIMIT " . $count . " ");
                 } else {
-                    $result = $db->query("SELECT id, name, price, image, description, content FROM product WHERE 
+                    $result = $db->query("SELECT id, name, price,  description, content FROM product WHERE 
                        cat_id = '" . $categoryId . "' ORDER BY id  LIMIT " . $count . " ");
                 }
 
@@ -107,7 +105,6 @@
                     $products[$i]['id'] = $row['id'];
                     $products[$i]['name'] = $row['name'];
                     $products[$i]['price'] = $row['price'];
-                    $products[$i]['image'] = $row['image'];
                     $products[$i]['description'] = $row['description'];
                     $products[$i]['content'] = $row['content'];
                     $i++;
@@ -179,7 +176,6 @@
                 $products[$i]['price'] = $row['price'];
                 $products[$i]['color'] = $row['color'];
                 $products[$i]['size'] = $row['size'];
-                $products[$i]['image'] = $row['image'];
                 $i++;
             }
             return $products;
@@ -262,6 +258,7 @@
          * Редактирует товар с указаным id
          * @param $id <p>id выбранного товара</p>
          * @param $options <p>опции выбранного товара</p>
+         * @return bool <p>Результат работы метода</p>
          */
         public static function updateProductById($id, $options)
         {
@@ -275,7 +272,9 @@
                     price = :price,
                     description = :description,
                     content = :content,
-                    cat_id = :cat_id
+                    cat_id = :cat_id,
+                    sub_id = :sub_id
+                    
                 WHERE id = :id";
 
             //Получение и сохранение результата
@@ -285,7 +284,29 @@
             $result->bindParam('description', $options['description'],PDO::PARAM_STR);
             $result->bindParam('content', $options['content'],PDO::PARAM_STR);
             $result->bindParam('cat_id', $options['cat_id'],PDO::PARAM_INT);
+            $result->bindParam('sub_id', $options['sub_id'],PDO::PARAM_INT);
             $result->bindParam('id', $id,PDO::PARAM_INT);
             return $result->execute();
+        }
+
+        public static function getImage($id)
+        {
+            //название изображения пустышки
+            $noImage = 'no-image.jpg';
+
+            // Путь к папке с изображением товара
+            $path = '/upload/images/products/';
+
+            //путь к изображения товара
+            $pathToProductImage = $path . $id .'.jpg';
+
+            if (file_exists($_SERVER['DOCUMENT_ROOT'].$pathToProductImage)) {
+                //Если изображение существует - возвращаем путь к изображению товара
+                return $pathToProductImage;
+            }
+
+            //Возвращаем путь изображения пустышки
+            return $path.$noImage;
+
         }
     }

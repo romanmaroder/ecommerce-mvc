@@ -1,6 +1,7 @@
 <?php
     require_once(ROOT . '/views/layouts/header_admin.php');
     /** @var AdminProductController $categoriesList */
+    /** @var AdminSubCategoryController $subCategoriesList */
 ?>
 <main class="admin__main">
     <div class="container">
@@ -44,8 +45,17 @@
                 <?php endif; ?>
             </select>
 
+            <label class="admin__label" for="subCategory">Подкатегория</label>
+            <select class="admin__select" name="sub_id" id="subCategory">
+                <?php if (is_array($subCategoriesList)): ?>
+                        <?php foreach ($subCategoriesList as $subCategory): ?>
+                            <option value="<?php echo $subCategory['sub_id']; ?>"><?php echo $subCategory['sub_name']; ?></option>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+            </select>
+
             <p class="admin__label">Изображение товара</p>
-<!--            <img src="--><?php //echo Product::getImage($product['id']) ;?><!--" width="200" alt="">-->
+            <img src="<?php echo Product::getImage($product['id']) ;?>" width="200" alt="">
             <label class="admin__label-file" for="image"> Выберите файл
                 <input class="admin__input-hide" type="file" name="image" id="image" multiple value="<?php echo $category['image']; ?>">
                 <input class="admin__input-file" type="text" id="admin__img" value="Файл не выбран..." disabled />

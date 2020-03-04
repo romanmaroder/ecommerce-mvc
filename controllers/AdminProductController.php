@@ -92,6 +92,9 @@
             //Получаем список категорий для выпадающего списка
             $categoriesList = Category::getCategoriesListAdmin();
 
+            //Получаем список подкатегорий
+            $subCategoriesList = Category::getSubCategoriesListAdmin();
+
             // Получаем данные о конкретном товаре
             $product = Product::getProductsById($id);
 
@@ -103,7 +106,7 @@
                 $options['content'] = $_POST['content'];
                 $options['price'] = $_POST['price'];
                 $options['cat_id'] = $_POST['cat_id'];
-
+                $options['sub_id'] = $_POST['sub_id'];
                 // Сохраняем изменения
 
                 if (Product::updateProductById($id, $options)) {

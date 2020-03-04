@@ -7,8 +7,7 @@
         <div class="breadcrumbs">
             <ul class="breadcrumb">
                 <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/admin">Админпанель</a></li>
-                <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/admin/subcategory">Управление подкатегориями</a></li>
-                <li class="active">Список подкатегорий</li>
+                <li class="active">Управление подкатегориями</li>
             </ul>
         </div>
 

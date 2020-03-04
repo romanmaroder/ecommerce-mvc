@@ -7,8 +7,7 @@
             <div class="breadcrumbs">
                 <ul class="breadcrumb">
                     <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/admin">Админпанель</a></li>
-                    <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/admin/product">Управление товарами</a></li>
-                    <li class="active">Список товаров</li>
+                    <li class="active">Управление товарами</li>
                 </ul>
             </div>
 
@@ -28,7 +27,7 @@
 
                 <?php foreach ($productList as $product): ?>
                     <tr>
-                        <td>#<b><?php echo $product['id']; ?></b></td>
+                        <td><?php echo $product['id']; ?></td>
                         <td><?php echo $product['name']; ?></td>
                         <td><?php echo $product['price']; ?> $</td>
                         <td><?php echo $product['description']; ?></td>

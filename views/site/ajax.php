@@ -4,7 +4,7 @@
 			   data-id="<?php echo $product['id']; ?>">Add to card</a>
 			<div class="card__add"></div>
 			<div class="card__img">
-				<img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>"
+				<img src="<?php echo Product::getImage($product['id']); ?>" alt="<?php echo $product['name']; ?>"
 					 title="<?php echo $product['name']; ?>" />
 			</div>
 			<div class="card__content">

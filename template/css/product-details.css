@@ -71,7 +71,7 @@
 .slider-nav__item {
 	background-color : #F1F3F8;
 	margin           : 25px;
-	
+	height: 150px;
 	}
 
 .slider__btn {

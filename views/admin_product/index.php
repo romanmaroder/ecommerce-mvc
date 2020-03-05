@@ -31,9 +31,9 @@
                         <td><?php echo $product['name']; ?></td>
                         <td><?php echo $product['price']; ?> $</td>
                         <td><?php echo $product['description']; ?></td>
-                        <td><a href="/admin/product/update/<?php echo $product['id']; ?>" title="Редактировать">
+                        <td class="link"><a href="/admin/product/update/<?php echo $product['id']; ?>" title="Редактировать">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                        <td><a href="/admin/product/delete/<?php echo $product['id']; ?>" title="Удалить">
+                        <td class="link"><a href="/admin/product/delete/<?php echo $product['id']; ?>" title="Удалить">
                                 <i class="fa fa-trash" aria-hidden="true"></i></a></td>
                     </tr>
                 <?php endforeach; ?>

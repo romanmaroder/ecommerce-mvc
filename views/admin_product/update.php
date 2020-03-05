@@ -38,9 +38,12 @@
 
             <label class="admin__label" for="category">Категория</label>
             <select class="admin__select" name="cat_id" id="category">
+
                 <?php if (is_array($categoriesList)): ?>
                     <?php foreach ($categoriesList as $category): ?>
-                        <option value="<?php echo $category['cat_id']; ?>"><?php echo $category['category_name']; ?></option>
+                        <option value="<?php echo $category['cat_id']; ?>"
+                        <?php if ($product['cat_id'] == $category['cat_id']) echo 'selected="selected"';?>
+                        ><?php echo $category['category_name']; ?></option>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </select>
@@ -49,7 +52,9 @@
             <select class="admin__select" name="sub_id" id="subCategory">
                 <?php if (is_array($subCategoriesList)): ?>
                         <?php foreach ($subCategoriesList as $subCategory): ?>
-                            <option value="<?php echo $subCategory['sub_id']; ?>"><?php echo $subCategory['sub_name']; ?></option>
+                            <option value="<?php echo $subCategory['sub_id']; ?>"
+                                <?php if ($product['sub_id'] == $subCategory['sub_id']) echo 'selected="selected"';?>
+                            ><?php echo $subCategory['sub_name']; ?></option>
                         <?php endforeach; ?>
                     <?php endif; ?>
             </select>

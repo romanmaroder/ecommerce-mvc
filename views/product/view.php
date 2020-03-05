@@ -1,4 +1,7 @@
-<?php include (ROOT.'/views/layouts/header.php') ?>
+<?php include (ROOT.'/views/layouts/header.php');
+    /** @var ProductController  $product */
+?>
+
 <!-- bread crumbs-->
 <div class="breadcrumbs content">
     <div class="container">
@@ -14,7 +17,8 @@
         <div class="container">
             <div class="product__inner">
                 <div class="slider slider-for">
-                    <div class="slider-for__item"><img src="<?php echo Product::getImage($product['id']); ?>" /></div>
+                    <div class="slider-for__item"><img src="<?php
+                            echo Product::getImage($product['id']); ?>" /></div>
                     <div class="slider-for__item"><img src="<?php echo Product::getImage($product['id']); ?>" /></div>
                     <div class="slider-for__item"><img src="<?php echo Product::getImage($product['id']); ?>" /></div>
                     <div class="slider-for__item"><img src="<?php echo Product::getImage($product['id']); ?>" /></div>

@@ -1,5 +1,8 @@
 <?php
 
+    /**
+     * Class Product для работы с товарами
+     */
     class Product
     {
         const SHOW_BY_DEFAULT = 6;

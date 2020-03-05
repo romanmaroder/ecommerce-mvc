@@ -36,15 +36,15 @@
                         <td><?php echo $order['date']; ?></td>
                         <td><?php echo Order::getStatusText($order['status']); ?></td>
 
-                        <td><a href="/admin/order/view/<?php echo $order['id']; ?>" title="Смотреть">
+                        <td class="link"><a href="/admin/order/view/<?php echo $order['id']; ?>" title="Смотреть">
                                 <i class="fa fa-eye" aria-hidden="true"></i>
                             </a>
-                        </td>
-                        <td><a href="/admin/order/update/<?php echo $order['id']; ?>" title="Редактировать">
+                        </td class="link">
+                        <td class="link"><a href="/admin/order/update/<?php echo $order['id']; ?>" title="Редактировать">
                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             </a>
                         </td>
-                        <td><a href="/admin/order/delete/<?php echo $order['id']; ?>" title="Удалить">
+                        <td class="link"><a href="/admin/order/delete/<?php echo $order['id']; ?>" title="Удалить">
                                 <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                         </td>

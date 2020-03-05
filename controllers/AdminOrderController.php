@@ -86,4 +86,27 @@
             require_once (ROOT .'/views/admin_order/view.php');
             return true;
         }
+
+        /**
+         * Action для страницы "Удалить заказ"
+         * @param int $id <p>id заказа</p>
+         * @return bool <p> Результат выплнения метода</p>
+         */
+        public static function actionDelete($id)
+        {
+            //Проверяем доступ
+            self::checkAdmin();
+
+            if (isset($_POST['submit'])) {
+                // Если форма отправлена
+                // Удаляем заказ
+                Order::deleteOrderById($id);
+
+                // Перенаправляем пользователя на страницу управлениями товарами
+                header("Location: /admin/order");
+            }
+            //Подключаем вид
+            require_once (ROOT.'/views/admin_order/delete.php');
+            return true;
+        }
     }

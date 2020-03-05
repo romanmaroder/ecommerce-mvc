@@ -15,7 +15,7 @@
 
         <h4>Список подкатегорий</h4>
 
-        <table class="admin__products">
+        <table class="admin__products subcategory">
             <tr>
                 <th>ID подкатегории</th>
                 <th>Наименование</th>
@@ -27,9 +27,9 @@
                 <tr>
                     <td><?php echo $subCategory['sub_id']; ?></td>
                     <td><?php echo $subCategory['sub_name']; ?></td>
-                    <td><a href="/admin/subcategory/update/<?php echo $subCategory['sub_id']; ?>" title="Редактировать">
+                    <td class="link"><a href="/admin/subcategory/update/<?php echo $subCategory['sub_id']; ?>" title="Редактировать">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                    <td><a href="/admin/subcategory/delete/<?php echo $subCategory['sub_id']; ?>" title="Удалить">
+                    <td class="link"><a href="/admin/subcategory/delete/<?php echo $subCategory['sub_id']; ?>" title="Удалить">
                             <i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
             <?php endforeach; ?>

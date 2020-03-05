@@ -108,34 +108,41 @@ html {
     text-align: right;
 }
 
+/*Стили таблиц*/
 .admin__products {
     width: 65%;
     text-align: left;
     margin-bottom: 15px;
     border-spacing: 0 10px;
+    border-collapse: collapse;
     color: #333;
 }
-
 .admin__products tr {
     height: 35px;
 }
-
 .admin__products tr:nth-child(even) {
     background-color: #ecf0f1;
 }
-
 .admin__products .fa {
     color: #e67e22;
 }
 .admin__products tr > td,
-.admin__products tr > th{
+.admin__products tr > th {
     padding-left: 15px;
+    border: 1px solid #ddd;
+}
+.admin__products .link {
+    padding: 10px;
+    text-align: center;
 }
 .admin__products tr > td > a {
     text-decoration: none;
     color: #e67e22;
     font-weight: 600;
-    margin-left: 15px;
+}
+
+.admin__products.subcategory {
+    width: 45%;
 }
 
 .admin__products-small {
@@ -147,15 +154,33 @@ html {
     border-spacing: 0 10px;
     color: #333;
 }
-.admin__products-small tr {
+.admin__products-small tr,
+.admin__products-medium tr {
     height: 35px;
 }
-.admin__products-small tr:nth-child(odd) {
+.admin__products-small tr:nth-child(odd),
+.admin__products-medium tr:nth-child(odd) {
     background-color: #ecf0f1;
 }
 .admin__products-small td {
     border: 1px solid #ddd;
     padding-left: 15px;
+}
+
+
+.admin__products-medium {
+    font-size: 14px;
+    width: 70%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-bottom: 15px;
+    border-spacing: 0 10px;
+    color: #333;
+}
+.admin__products-medium td,
+.admin__products-medium th{
+    border: 1px solid #ddd;
+
 }
 
 /*Хлебные крошки*/

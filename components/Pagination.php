@@ -98,12 +98,12 @@ class Pagination
             # Если текущая страница не первая
             if ($this->current_page > 1)
             # Создаём ссылку "На первую"
-                $links = $this->generateHtml(1, 'Prew') . $links;
+                $links = $this->generateHtml(1, 'Первая') . $links;
 
             # Если текущая страница не первая
             if ($this->current_page < $this->amount)
             # Создаём ссылку "На последнюю"
-                $links .= $this->generateHtml($this->amount, 'Next');
+                $links .= $this->generateHtml($this->amount, 'Последняя');
         }
 
         $html .= $links . '</ul>';

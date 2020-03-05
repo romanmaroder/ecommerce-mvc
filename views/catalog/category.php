@@ -1,4 +1,6 @@
-<?php include(ROOT . '/views/layouts/header.php') ?>
+<?php include(ROOT . '/views/layouts/header.php');
+    /** @var CatalogController $subcategories */
+?>
 	<main class="content">
 		<div class="container">
 			<div class="wrapper">
@@ -9,32 +11,15 @@
 							<div class="accordeon-head" data-accordeon-head="data-accordeon-head">CATEGORIES</div>
 							<div class="accordeon-body" data-accordeon-body="data-accordeon-body">
 								<ul class="accordeon-body__list">
-									<li class="accordeon-body__item"><a class="accordeon-body__link"
-																		href="#">T-shirt</a></li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Shirt</a>
-									</li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Shoes</a>
-									</li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Bags</a>
-									</li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Jacket</a>
-									</li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link"
-																		href="#">Sunglass</a></li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Spray</a>
-									</li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Cap</a>
-									</li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Belt</a>
-									</li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Jeans</a>
-									</li>
-									<li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Shoes</a>
-									</li>
+                                    <?php  foreach ($subcategories as $subcategory) :?>
+
+                                        <li class="accordeon-body__item"><a class="accordeon-body__link" href="<?php echo $subcategory['sub_id'];?>"><?php echo $subcategory['sub_name'];?></a>
+                                        </li>
+                                    <?php endforeach;?>
 								</ul>
 							</div>
 						</div>
-						<div class="accordeon">
+<!--						<div class="accordeon">
 							<div class="accordeon-head" data-accordeon-head="data-accordeon-head">COLORS</div>
 							<div class="accordeon-body" data-accordeon-body="data-accordeon-body">
 								<form class="accordeon-body__form">
@@ -98,7 +83,7 @@
 																								  readonly="readonly" /></span>
 								</div>
 							</div>
-						</div>
+						</div>-->
 					</div>
 				</aside>
 				<div class="wrapper__content">

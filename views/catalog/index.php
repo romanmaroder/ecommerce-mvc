@@ -1,4 +1,5 @@
-<?php include_once 'views/layouts/header.php'; ?>
+<?php include_once 'views/layouts/header.php';
+    /** @var CatalogController $subcategories */?>
 <div class="breadcrumbs content">
     <div class="container">
         <ul class="breadcrumbs__list">
@@ -19,24 +20,16 @@
                         <div class="accordeon-head" data-accordeon-head="data-accordeon-head">CATEGORIES</div>
                         <div class="accordeon-body" data-accordeon-body="data-accordeon-body">
                             <ul class="accordeon-body__list">
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">T-shirt</a>
+                                <?php foreach ($subcategories as $subcategory) :?>
+
+                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="<?php echo $subcategory['sub_id'];?>"><?php echo $subcategory['sub_name'];?></a>
                                 </li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Shirt</a></li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Shoes</a></li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Bags</a></li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Jacket</a>
-                                </li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Sunglass</a>
-                                </li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Spray</a></li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Cap</a></li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Belt</a></li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Jeans</a></li>
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="#">Shoes</a></li>
+                                <?php endforeach;?>
+
                             </ul>
                         </div>
                     </div>
-                    <div class="accordeon">
+                    <!--<div class="accordeon">
                         <div class="accordeon-head" data-accordeon-head="data-accordeon-head">COLORS</div>
                         <div class="accordeon-body" data-accordeon-body="data-accordeon-body">
                             <form class="accordeon-body__form">
@@ -95,7 +88,7 @@
                                                                                               readonly="readonly"/></span>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </aside>
             <div class="wrapper__content">
@@ -258,9 +251,10 @@
                         <a class="card__link card__add-btn" href="#" data-id="<?php echo $product['id']; ?>">Add to
                             card</a>
                         <div class="card__add"></div>
-                        <div class="card__img card__img--grid"><img src="<?php echo Product::getImage($product['id']); ?>"
-                                                                    alt="<?php echo $product['name']; ?>"
-                                                                    title="<?php echo $product['name']; ?>"/></div>
+                        <div class="card__img card__img--grid"><img
+                                    src="<?php echo Product::getImage($product['id']); ?>"
+                                    alt="<?php echo $product['name']; ?>"
+                                    title="<?php echo $product['name']; ?>"/></div>
                         <div class="card__content">
                             <div class="card__title"><?php echo $product['name']; ?></div>
                             <div class="card__subtitle"><?php echo $product['description']; ?></div>

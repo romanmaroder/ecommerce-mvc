@@ -146,4 +146,19 @@
             return $result->execute();
         }
 
+        public static function deleteOrderById(int $id)
+        {
+            //Подключение к БД
+            $db = Db::getConnection();
+
+            //запрос к БД
+            $sql = "DELETE FROM product_order WHERE id= :id";
+
+            // Получение и возврат результатов. Используется подготовленный запрос
+            $result = $db->prepare($sql);
+            $result->bindParam(':id', $id, PDO::PARAM_INT);
+            return $result->execute();
+
+        }
+
     }

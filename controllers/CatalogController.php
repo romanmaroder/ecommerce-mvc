@@ -28,6 +28,10 @@ class CatalogController
 
         $total = Product::getTotalProductsInCategory($categoryId);
 
+        // Получаем массив подкатегорий
+        $subcategories = array();
+        $subcategories = Category::getSubCategoriesListAdmin();
+
         // Создаем объект Pagination - постраничная навигация
         $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 

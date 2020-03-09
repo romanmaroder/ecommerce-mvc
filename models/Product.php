@@ -5,17 +5,16 @@
      */
     class Product
     {
-        const SHOW_BY_DEFAULT = 6;
+        public const SHOW_BY_DEFAULT = 6;
 
 
         /**
-         * Returns an array of products
+         * Возвращает массив последних товаров
          *
-         * @param int $count
+         * @param int $count [optional] <p>Количество</p>
          *
          * @return array
          */
-
         public static function getLatestProducts($count = self::SHOW_BY_DEFAULT)
         {
 
@@ -42,21 +41,20 @@
         }
 
         /**
-         * Reruns an array of products in a specific category
+         * Возвращает список товаров в указанной категории
          *
-         * @param  $categoryId <p>Индитификатор категории</p>
+         * @param int $categoryId <p>Индитификатор категории</p>
          *
          * @param int $page
          * @return array <p>Список товаров по выбранной категории</p>
          */
-
         public static function getProductsListByCategory($categoryId, $page = 1)
         {
             if ($categoryId) {
 
                 $page = intval($page);
 
-                $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+                $offset = ( $page - 1 ) * self::SHOW_BY_DEFAULT;
 
                 $db = Db::getConnection();
 
@@ -67,7 +65,7 @@
                         ORDER BY RAND()  LIMIT " . self::SHOW_BY_DEFAULT . "  OFFSET  $offset ");
                 } else {
                     $result = $db->query("SELECT id, name, price, description, content FROM product WHERE 
-                       cat_id = '" . $categoryId . "' ORDER BY id ASC LIMIT  " . self::SHOW_BY_DEFAULT . "  OFFSET  $offset ");
+                       cat_id = '" . $categoryId . "'  ORDER BY id ASC LIMIT  " . self::SHOW_BY_DEFAULT. "  OFFSET  $offset "  );
                 }
                 $i = 0;
                 while ($row = $result->fetch()) {
@@ -78,7 +76,46 @@
                     $products[$i]['content'] = $row['content'];
                     $i++;
                 }
-                return $products;
+
+            }
+            return $products;
+
+        }
+
+        /**
+         * Возвращает список товаров в указанной подкатегории
+         *
+         * @param int $subcategoryId <p>Индитификатор подкатегории</p>
+         *
+         * @param int $page
+         * @return array <p>Список товаров по выбранной подкатегории</p>
+         */
+        public static function getProductsListBySubcategory($categoryId, $subcategoryId, $page = 1)
+        {
+            if ($subcategoryId) {
+                $page = intval($page);
+
+                $offset = ( $page - 1 ) * self::SHOW_BY_DEFAULT;
+
+                $db = Db::getConnection();
+
+                $subproducts = array();
+
+
+                $result = $db->query("SELECT id, name, price, description, content FROM product WHERE cat_id = '" . $categoryId . "' AND
+                       sub_id = '" . $subcategoryId . "' ORDER BY id   LIMIT  " . self::SHOW_BY_DEFAULT. "  OFFSET  $offset " );
+
+                $i = 0;
+                while ($row = $result->fetch()) {
+                    $subproducts[$i]['id'] = $row['id'];
+                    $subproducts[$i]['name'] = $row['name'];
+                    $subproducts[$i]['price'] = $row['price'];
+                    $subproducts[$i]['description'] = $row['description'];
+                    $subproducts[$i]['content'] = $row['content'];
+                    $i++;
+                }
+                    return $subproducts;
+
             }
         }
 
@@ -99,7 +136,7 @@
                     $result = $db->query("SELECT id, name, price, description, content FROM product  ORDER BY RAND()  LIMIT " . $count . " ");
                 } else {
                     $result = $db->query("SELECT id, name, price,  description, content FROM product WHERE 
-                       cat_id = '" . $categoryId . "' ORDER BY id  LIMIT " . $count . " ");
+                       cat_id = '" . $categoryId . "' ORDER BY sub_id  DESC LIMIT " . $count . " ");
                 }
 
 
@@ -123,7 +160,6 @@
          *
          * @return mixed
          */
-
         public static function getProductsById($id)
         {
             $id = intval($id);
@@ -145,7 +181,6 @@
          *
          * @return  - кол-во товаров в категории
          */
-
         public static function getTotalProductsInCategory($categoryId)
         {
             $db = Db::getConnection();
@@ -153,6 +188,15 @@
             $result->setFetchMode(PDO::FETCH_ASSOC);
             $row = $result->fetch();
 
+            return $row['count'];
+        }
+
+        public static function getTotalProductsInSubcategory($categoryId,$subcategoryId)
+        {
+            $db = Db::getConnection();
+            $result = $db->query("SELECT count(id) AS count FROM product WHERE cat_id = $categoryId AND sub_id = $subcategoryId");
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $row = $result->fetch();
             return $row['count'];
         }
 
@@ -282,13 +326,13 @@
 
             //Получение и сохранение результата
             $result = $db->prepare($sql);
-            $result->bindParam('name', $options['name'],PDO::PARAM_STR);
-            $result->bindParam('price', $options['price'],PDO::PARAM_STR);
-            $result->bindParam('description', $options['description'],PDO::PARAM_STR);
-            $result->bindParam('content', $options['content'],PDO::PARAM_STR);
-            $result->bindParam('cat_id', $options['cat_id'],PDO::PARAM_INT);
-            $result->bindParam('sub_id', $options['sub_id'],PDO::PARAM_INT);
-            $result->bindParam('id', $id,PDO::PARAM_INT);
+            $result->bindParam('name', $options['name'], PDO::PARAM_STR);
+            $result->bindParam('price', $options['price'], PDO::PARAM_STR);
+            $result->bindParam('description', $options['description'], PDO::PARAM_STR);
+            $result->bindParam('content', $options['content'], PDO::PARAM_STR);
+            $result->bindParam('cat_id', $options['cat_id'], PDO::PARAM_INT);
+            $result->bindParam('sub_id', $options['sub_id'], PDO::PARAM_INT);
+            $result->bindParam('id', $id, PDO::PARAM_INT);
             return $result->execute();
         }
 
@@ -301,15 +345,15 @@
             $path = '/upload/images/products/';
 
             //путь к изображения товара
-            $pathToProductImage = $path . $id .'.jpg';
+            $pathToProductImage = $path . $id . '.jpg';
 
-            if (file_exists($_SERVER['DOCUMENT_ROOT'].$pathToProductImage)) {
+            if (file_exists($_SERVER['DOCUMENT_ROOT'] . $pathToProductImage)) {
                 //Если изображение существует - возвращаем путь к изображению товара
                 return $pathToProductImage;
             }
 
             //Возвращаем путь изображения пустышки
-            return $path.$noImage;
+            return $path . $noImage;
 
         }
     }

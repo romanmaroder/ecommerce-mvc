@@ -22,7 +22,8 @@
                             <ul class="accordeon-body__list">
                                 <?php foreach ($subcategories as $subcategory) :?>
 
-                                <li class="accordeon-body__item"><a class="accordeon-body__link" href="<?php echo $subcategory['sub_id'];?>"><?php echo $subcategory['sub_name'];?></a>
+                                <li class="accordeon-body__item">
+                                    <a class="accordeon-body__link" href="<?php echo $subcategory['sub_id'];?>"><?php echo $subcategory['sub_name'];?></a>
                                 </li>
                                 <?php endforeach;?>
 

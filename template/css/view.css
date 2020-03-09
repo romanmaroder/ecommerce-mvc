@@ -528,7 +528,8 @@
     -ms-flex-pack: center;
     justify-content: center;
     right: 0;
-    height: 24px;
+    top: 5px;
+    height: 15px;
     border-left: .3px solid #64759F33;
     cursor: pointer
 }
@@ -801,6 +802,17 @@
     display: -ms-flexbox;
     display: flex
 }
+
+.card__error {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    line-height: 30px;
+    color:#C92861;
+    text-align: center;
+    margin: 0 auto;
+}
+
 
 .pagination {
     max-width: 185px;

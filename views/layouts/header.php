@@ -1,6 +1,6 @@
 <?php
-/** @var \SiteController $navCategories
- * @var \CatalogController $categoryId
+/** @var SiteController $navCategories
+ * @var CatalogController $categoryId
  */
 
 ?>

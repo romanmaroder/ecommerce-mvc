@@ -8,7 +8,7 @@
     {
 
         /**
-         *Return an array of category
+         *Возвращает массив категорий
          */
         public static function getCategoriesList()
         {
@@ -27,6 +27,77 @@
             return $categoryList;
 
         }
+
+        /**
+         * Возвращает подкатегорию с заданным id
+         * @param int $id <p>id подкатегории</p>
+         * @return array <p>Массив с информацией о категории</p>
+         */
+        public static function getSubCategoryById($id)
+        {
+            //Подключение к БД
+            $db = Db::getConnection();
+
+            //Запрос к БД
+            $sql = "SELECT * FROM subcategory WHERE sub_id= :sub_id";
+
+            //Получение и возврат результата
+            $result = $db->prepare($sql);
+            $result->bindParam(':sub_id', $id,PDO::PARAM_INT);
+
+            // Указываем, что хотим получить данные в виде массива
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+
+            //Выполняем запрос
+            $result->execute();
+
+            //Возвращаем данные
+            return $result->fetch();
+        }
+
+        /**
+         * Возвращает массив с категориями для навигационного меню
+         * @return array
+         */
+        public static function getNavCategoryList()
+        {
+            $db = Db::getConnection();
+
+            $navCategoryList = array();
+
+            $result = $db->query("SELECT * FROM category WHERE cat_id NOT IN (1)");
+
+            $i = 0;
+            while ($row = $result->fetch()) {
+                $navCategoryList[$i]['cat_id'] = $row['cat_id'];
+                $navCategoryList[$i]['category_name'] = $row['category_name'];
+                $i++;
+            }
+            return $navCategoryList;
+        }
+
+        public static function getCategoryList($categoryId)
+        {
+
+            $db = Db::getConnection();
+
+            $sql = 'SELECT * FROM category WHERE cat_id = :cat_id';
+
+            $result = $db->prepare($sql);
+            $result->bindParam(':cat_id', $categoryId, PDO::PARAM_INT);
+
+            // Указываем, что хотим получить данные в виде массива
+            $result->setFetchMode(PDO::FETCH_ASSOC);
+
+            //Выполняем запрос
+            $result->execute();
+
+            // Возвращаем данные
+            return $result->fetch();
+
+        }
+
+
 
         /**
          * Возвращает массив категорий для списка в админпанели
@@ -79,55 +150,7 @@
         }
 
         /**
-         * Возвращает подкатегорию с заданным id
-         * @param int $id <p>id подкатегории</p>
-         * @return array <p>Массив с информацией о категории</p>
-         */
-        public static function getSubCategoryById($id)
-        {
-            //Подключение к БД
-            $db = Db::getConnection();
-
-            //Запрос к БД
-            $sql = "SELECT * FROM subcategory WHERE sub_id= :sub_id";
-
-            //Получение и возврат результата
-            $result = $db->prepare($sql);
-            $result->bindParam(':sub_id', $id,PDO::PARAM_INT);
-
-            // Указываем, что хотим получить данные в виде массива
-            $result->setFetchMode(PDO::FETCH_ASSOC);
-
-            //Выполняем запрос
-            $result->execute();
-
-            //Возвращаем данные
-            return $result->fetch();
-        }
-
-        /**
-         * Возвращает массив с категориями для навигационного меню
-         * @return array
-         */
-        public static function getNavCategoryList()
-        {
-            $db = Db::getConnection();
-
-            $navCategoryList = array();
-
-            $result = $db->query("SELECT * FROM category WHERE cat_id NOT IN (1)");
-
-            $i = 0;
-            while ($row = $result->fetch()) {
-                $navCategoryList[$i]['cat_id'] = $row['cat_id'];
-                $navCategoryList[$i]['category_name'] = $row['category_name'];
-                $i++;
-            }
-            return $navCategoryList;
-        }
-
-        /**
-         * Добавляем новую подкатегорию
+         * Добавляем новую подкатегорию в админпанели
          * @param $name
          * @return bool <p>Результат добавления подкатегории в таблицу</p>
          */
@@ -146,7 +169,7 @@
         }
 
         /**
-         * Удаляет подкатегорию с заданным id
+         * Удаляет подкатегорию с заданным id в админпанели
          * @param int $id <p>id Выбранной подкатегории</p>
          * @return bool <p> Результат работы метода</p>
          */

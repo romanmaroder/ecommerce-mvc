@@ -35,6 +35,12 @@
             $subcategories = array();
             $subcategories = Category::getSubCategoriesListAdmin();
 
+            //Получаем индитификатор пользователя из сессии
+            $userId = User::checkLogged();
+
+            //Получаем индитификатор пользователя из БД
+            $user = User::getUserById($userId);
+
             // Создаем объект Pagination - постраничная навигация
             $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
@@ -55,6 +61,13 @@
 
             $subcategoriesProducts = array();
             $subcategoriesProducts = Product::getProductsListBySubcategory( $categoryId,$subcategoryId, $page);
+
+
+            //Получаем индитификатор пользователя из сессии
+            $userId = User::checkLogged();
+
+            //Получаем индитификатор пользователя из БД
+            $user = User::getUserById($userId);
 
 
             // Создаем объект Pagination - постраничная навигация

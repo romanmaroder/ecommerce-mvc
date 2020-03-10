@@ -5,7 +5,7 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8"/>
@@ -31,6 +31,8 @@
 
 	<!--Стили для форм-->
 	<link rel="stylesheet" href="/template/css/form.css" />
+<!--    Стили кабинета-->
+	<link rel="stylesheet" href="/template/css/cabinet.css" />
 
     <title>Главная</title>
     <link rel="stylesheet"
@@ -66,13 +68,13 @@
                 <label>
                     <select class="login__select" onchange="window.location.href=this.options[this.selectedIndex].value">
                         <?php if (User::isGuest()): ?>
-                            <option value="/">Welcome</option>
-                            <option value="/user/login/">Sing In (Вход)</option>
-                            <option value="/user/register/">Registration (регистрация)</option>
+                            <option value="/">Гость</option>
+                            <option value="/user/login/">Войти</option>
+                            <option value="/user/register/">Регистрация</option>
                         <?php else: ?>
-                            <option value="/">Hello</option>
-                            <option value="/cabinet/">My Account (кабинет)</option>
-                            <option value="/user/logout/">Quit (Выход)</option>
+                            <option value="/"><?php echo $user['name'];?></option>
+                            <option value="/cabinet/">Личный кабинет</option>
+                            <option value="/user/logout/">Выход</option>
                         <?php endif; ?>
                     </select>
                 </label>

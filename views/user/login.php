@@ -9,7 +9,7 @@
 	<section class="form-block">
 		<div class="container">
 
-			<h1 class="form-block__title">Sign In</h1>
+			<h1 class="form-block__title">Войти</h1>
             <?php if (isset($errors) && is_array($errors)): ?>
 				<ul class="form-block__errors errors">
                     <?php foreach ($errors as $error): ?>
@@ -24,10 +24,10 @@
 				</label>
 				<label class="form__label" for="password">
 					<input class="form__input-elem" type="password" name="password" required="required"
-						   placeholder="Password" value="<?php echo $password; ?>" id="password" />
+						   placeholder="Пароль" value="<?php echo $password; ?>" id="password" />
 				</label>
 				<label class="form__label" for="submit">
-					<input class="btn btn__form" type="submit" name="submit" value="Sign in" id="submit" />
+					<input class="btn btn__form" type="submit" name="submit" value="Войти" id="submit" />
 				</label>
 			</form>
 		</div>

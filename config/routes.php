@@ -26,17 +26,21 @@
         'cart/add/([0-9]+)'                                    => 'cart/add/$1',
         'cart/addAjax/([0-9]+)'                                => 'cart/addAjax/$1',
         'cart'                                                 => 'cart/index',
-        //    Новости
-        'news/([0-9]+)'                                        => 'news/view/$1',
-        'news'                                                 => 'news/index',   // actionIndex в NewsController
+
         //    Пользователь
         'user/register'                                        => 'user/register',
         'user/login'                                           => 'user/login',
         'user/logout'                                          => 'user/logout',
         'cabinet/edit'                                         => 'cabinet/edit',
+        'cabinet/history'                                      => 'cabinet/history',
+        'cabinet/view/([0-9]+)'                                => 'cabinet/view/$1',
         'cabinet'                                              => 'cabinet/index',
         //    О нас
         'contacts'                                             => 'site/contact',
+
+        // Управление новостями
+        'admin/news'                                           => 'adminNews/index', // actionIndex в AdminNewsController
+
         //        Управление товарами
         'admin/product/create'                                 => 'adminProduct/create',
         'admin/product/update/([0-9]+)'                        => 'adminProduct/update/$1',
@@ -52,8 +56,13 @@
         'admin/order/delete/([0-9]+)'                          => 'adminOrder/delete/$1',
         'admin/order/view/([0-9]+)'                            => 'adminOrder/view/$1',
         'admin/order'                                          => 'adminOrder/index',
+
         //    Админпанель
         'admin'                                                => 'admin/index',
+
+        //    Новости
+        'news/([0-9]+)'                                        => 'news/view/$1',
+        'news'                                                 => 'news/index',   // actionIndex в NewsController
         //        Главная страница
         'site/ajax/([0-9]+)'                                   => 'site/ajax/$1', // actionAjax в SiteController
         'index.php'                                            => 'site/index',

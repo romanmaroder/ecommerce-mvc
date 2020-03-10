@@ -3,19 +3,18 @@
 /** @var \CabinetController $user */
 
 ?>
-
-<section>
+<main >
+<section class="cabinet">
     <div class="container">
-        <h1>User account</h1>
-        <h3>Hello, <?php echo $user['name']; ?></h3>
-        <ul>
-            <li><a href="/cabinet/edit">Edit data</a></li>
-            <li><a href="/cabinet/history">Shopping list</a></li>
+        <h1 class="cabinet__title">Здравствуйте, <?php echo $user['name']; ?>!</h1>
+        <ul class="cabinet__list">
+            <li><a class="cabinet__link" href="/cabinet/edit">Редактирование своих данных</a></li>
+            <li><a class="cabinet__link" href="/cabinet/history">История заказов</a></li>
         </ul>
 
     </div>
 
 </section>
-
+</main>
 
 <?php include ROOT . '/views/layouts/footer.php'; ?>

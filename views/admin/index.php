@@ -8,6 +8,7 @@
                     <li class="admin__item"><a href="/admin/product" class="admin__link">Управление товарами</a></li>
                     <li class="admin__item"><a href="/admin/subcategory" class="admin__link">Управление подкатегориями</a></li>
                     <li class="admin__item"><a href="/admin/order" class="admin__link">Управление заказами</a></li>
+                    <li class="admin__item"><a href="/admin/news" class="admin__link">Управление новостями</a></li>
                 </ul>
             </div>
         </div>

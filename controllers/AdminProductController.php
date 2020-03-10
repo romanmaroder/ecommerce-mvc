@@ -20,7 +20,7 @@
             $productList = Product::getProductsList();
 
             // Подключаем вид
-            require_once(ROOT . '/views/admin_product/index.php');
+            require_once( ROOT . '/views/admin_product/index.php' );
             return true;
         }
 
@@ -75,7 +75,7 @@
                 }
             }
             //Подключение вида
-            require_once(ROOT . '/views/admin_product/create.php');
+            require_once( ROOT . '/views/admin_product/create.php' );
             return true;
         }
 
@@ -125,7 +125,7 @@
                 }
             }
             //Подключение вида
-            require_once(ROOT . '/views/admin_product/update.php');
+            require_once( ROOT . '/views/admin_product/update.php' );
             return true;
         }
 
@@ -149,7 +149,7 @@
                 header("Location: /admin/product");
             }
             //Подключаем вид
-            require_once(ROOT . '/views/admin_product/delete.php');
+            require_once( ROOT . '/views/admin_product/delete.php' );
             return true;
         }
     }

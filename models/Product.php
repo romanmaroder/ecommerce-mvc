@@ -65,7 +65,7 @@
                         ORDER BY RAND()  LIMIT " . self::SHOW_BY_DEFAULT . "  OFFSET  $offset ");
                 } else {
                     $result = $db->query("SELECT id, name, price, description, content FROM product WHERE 
-                       cat_id = '" . $categoryId . "'  ORDER BY id ASC LIMIT  " . self::SHOW_BY_DEFAULT. "  OFFSET  $offset "  );
+                       cat_id = '" . $categoryId . "'  ORDER BY id ASC LIMIT  " . self::SHOW_BY_DEFAULT . "  OFFSET  $offset ");
                 }
                 $i = 0;
                 while ($row = $result->fetch()) {
@@ -103,7 +103,7 @@
 
 
                 $result = $db->query("SELECT id, name, price, description, content FROM product WHERE cat_id = '" . $categoryId . "' AND
-                       sub_id = '" . $subcategoryId . "' ORDER BY id   LIMIT  " . self::SHOW_BY_DEFAULT. "  OFFSET  $offset " );
+                       sub_id = '" . $subcategoryId . "' ORDER BY id   LIMIT  " . self::SHOW_BY_DEFAULT . "  OFFSET  $offset ");
 
                 $i = 0;
                 while ($row = $result->fetch()) {
@@ -114,7 +114,7 @@
                     $subproducts[$i]['content'] = $row['content'];
                     $i++;
                 }
-                    return $subproducts;
+                return $subproducts;
 
             }
         }
@@ -191,7 +191,7 @@
             return $row['count'];
         }
 
-        public static function getTotalProductsInSubcategory($categoryId,$subcategoryId)
+        public static function getTotalProductsInSubcategory($categoryId, $subcategoryId)
         {
             $db = Db::getConnection();
             $result = $db->query("SELECT count(id) AS count FROM product WHERE cat_id = $categoryId AND sub_id = $subcategoryId");
@@ -201,22 +201,30 @@
         }
 
         /**
-         * Return products
+         * Возвращает список товаров с указанными индентификторами
+         * @param array $idsArray <p>Массив с идентификаторами</p>
+         * @return array <p>Массив со списком товаров</p>
          */
         public static function getProductsByIds($idsArray)
         {
-            $products = array();
 
+            // Соединение с БД
             $db = Db::getConnection();
 
+            // Превращаем массив в строку для формирования условия в запросе
             $idsString = implode(',', $idsArray);
 
+            // Текст запроса к БД
             $sql = "SELECT * FROM product WHERE id IN ($idsString)";
 
             $result = $db->query($sql);
+
+            // Указываем, что хотим получить данные в виде массива
             $result->setFetchMode(PDO::FETCH_ASSOC);
 
+            // Получение и возврат результатов
             $i = 0;
+            $products = array();
             while ($row = $result->fetch()) {
                 $products[$i]['id'] = $row['id'];
                 $products[$i]['name'] = $row['name'];

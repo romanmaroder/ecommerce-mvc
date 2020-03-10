@@ -241,4 +241,15 @@ class User
 
     }
 
+    public static function getHistory()
+    {
+
+            //Получаем индитификатор пользователя из сессии
+            $userId = User::checkLogged();
+
+
+
+    }
+
+
 }

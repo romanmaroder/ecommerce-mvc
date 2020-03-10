@@ -1,53 +1,80 @@
 <?php
 
 
-class News
-{
-    /**
-     * Return single news item with specified id
-     * $param integer $id
-     */
-    public static function getNewsItemById($id)
+    class News
     {
-        $id = intval($id);
+        /**
+         * Return single news item with specified id
+         * $param integer $id
+         */
+        public static function getNewsItemById($id)
+        {
+            $id = intval($id);
 
-        if ($id) {
+            if ($id) {
 
+                $db = Db::getConnection();
+
+                $result = $db->query(" SELECT * FROM news WHERE id='$id' ");
+                $result->setFetchMode(PDO::FETCH_ASSOC);
+
+                $newsList = $result->fetch();
+
+                return $newsList;
+            }
+        }
+
+        /**
+         * Returns an array of news item
+         */
+        public static function getNewsList()
+        {
             $db = Db::getConnection();
 
-            $result = $db->query(" SELECT * FROM news WHERE id='$id' ");
-            $result->setFetchMode(PDO::FETCH_ASSOC);
+            $newsList = array();
 
-            $newsList = $result->fetch();
-
-            return $newsList;
-        }
-    }
-
-    /**
-     * Returns an array of news item
-     */
-    public static function getNewsList()
-    {
-        $db = Db::getConnection();
-
-        $newsList = array();
-
-        $result = $db->query(" SELECT id, title, short_content, preview,type
+            $result = $db->query(" SELECT id, title, short_content, preview,type
                 FROM news 
                 ORDER BY date DESC 
                 LIMIT 10");
 
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $newsList[$i]['id']            = $row['id'];
-            $newsList[$i]['title']         = $row['title'];
-            $newsList[$i]['short_content'] = $row['short_content'];
-            $newsList[$i]['preview']       = $row['preview'];
-            $newsList[$i]['type']          = $row['type'];
-            $i++;
+            $i = 0;
+            while ($row = $result->fetch()) {
+                $newsList[$i]['id'] = $row['id'];
+                $newsList[$i]['title'] = $row['title'];
+                $newsList[$i]['short_content'] = $row['short_content'];
+                $newsList[$i]['preview'] = $row['preview'];
+                $newsList[$i]['type'] = $row['type'];
+                $i++;
+            }
+
+            return $newsList;
         }
 
-        return $newsList;
+        public static function getNewsListAdmin()
+        {
+            $db = Db::getConnection();
+
+            $newsList = array();
+
+            $result = $db->query(" SELECT *
+                FROM news 
+                ORDER BY date  
+                LIMIT 10");
+
+            $i = 0;
+            while ($row = $result->fetch()) {
+                $newsList[$i]['id'] = $row['id'];
+                $newsList[$i]['title'] = $row['title'];
+                $newsList[$i]['date'] = $row['date'];
+                $newsList[$i]['short_content'] = $row['short_content'];
+                $newsList[$i]['content'] = $row['content'];
+                $newsList[$i]['author_name'] = $row['author_name'];
+                $newsList[$i]['preview'] = $row['preview'];
+                $newsList[$i]['type'] = $row['type'];
+                $i++;
+            }
+
+            return $newsList;
+        }
     }
-}

@@ -1,18 +1,23 @@
 <?php
-//include_once ROOT . '/models/Category.php';
-//include_once ROOT . '/models/Product.php';
 
-class ProductController
-{
-    public function actionView($productId)
+
+    class ProductController
     {
-        $navCategories = array();
-        $navCategories = Category::getNavCategoryList();
+        public function actionView($productId)
+        {
+            $navCategories = array();
+            $navCategories = Category::getNavCategoryList();
 
-        $product = Product::getProductsById($productId);
+            $product = Product::getProductsById($productId);
 
-        require_once(ROOT . '/views/product/view.php');
+            //Получаем индитификатор пользователя из сессии
+            $userId = User::checkLogged();
 
-        return true;
+            //Получаем индитификатор пользователя из БД
+            $user = User::getUserById($userId);
+
+            require_once( ROOT . '/views/product/view.php' );
+
+            return true;
+        }
     }
-}

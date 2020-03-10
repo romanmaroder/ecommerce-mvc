@@ -1,6 +1,4 @@
 <?php
-//include_once(ROOT . '/models/Category.php');
-//include_once(ROOT . '/models/Product.php');
 
 
     class SiteController
@@ -26,6 +24,11 @@
             $newsList = array();
             $newsList = News::getNewsList();
 
+            //Получаем индитификатор пользователя из сессии
+            $userId = User::checkLogged();
+
+            //Получаем индитификатор пользователя из БД
+            $user = User::getUserById($userId);
 
             if (isset($_POST['emailSubscribe'])) {
 

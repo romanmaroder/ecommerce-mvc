@@ -55,7 +55,7 @@
                        href="/category/<?php echo $category['cat_id'] ?>"><?php echo $category['category_name'] ?></a>
                 </li>
             <?php endforeach; ?>
-            <li class="menu__item"><a class="menu__link" href="/blog/">Блог</a></li>
+            <li class="menu__item"><a class="menu__link" href="/news/">Блог</a></li>
         </ul>
         <div class="nav-cart cart">
             <span id="cart-count" class="cart__count"><?php echo Cart::countItems();?></span>

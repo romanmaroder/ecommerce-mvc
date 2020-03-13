@@ -39,7 +39,11 @@
         'contacts'                                             => 'site/contact',
 
         // Управление новостями
-        'admin/news'                                           => 'adminNews/index', // actionIndex в AdminNewsController
+
+        'admin/news/update/([0-9]+)'                           => 'adminNews/update/$1',
+        'admin/news'                                           => 'adminNews/index',
+        // actionIndex в AdminNewsController
+        // actionIndex в AdminNewsController
 
         //        Управление товарами
         'admin/product/create'                                 => 'adminProduct/create',

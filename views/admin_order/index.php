@@ -13,7 +13,7 @@
 
             <h4>Список заказов</h4>
 
-            <table class="admin__products">
+            <table class="admin__products order">
                 <tr>
                     <th>ID заказа</th>
                     <th>Имя покупателя</th>

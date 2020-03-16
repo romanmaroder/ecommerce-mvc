@@ -11,6 +11,8 @@
                 </ul>
             </div>
 
+            <a href="/admin/news/create" class="admin__btn-add"><i class="fa fa-plus"></i> Добавить новость</a>
+
             <h4>Список новостей</h4>
             <table  class="admin__products">
                 <tr>
@@ -18,6 +20,8 @@
                     <th>Заголовок</th>
                     <th>Автор</th>
                     <th>Дата</th>
+                    <th>Статус</th>
+                    <th></th>
                     <th></th>
                 </tr>
                 <?php foreach ($newsList as $news) :?>
@@ -26,10 +30,11 @@
                     <td><?php echo $news['title'];?></td>
                     <td><?php echo $news['author_name'];?></td>
                     <td><?php echo $news['date'];?></td>
+                    <td><?php echo News::getStatusText($news['visible']); ?></td>
                     <td class="link"><a href="/admin/news/update/<?php echo $news['id']; ?>" title="Редактировать">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-<!--                    <td class="link"><a href="/admin/news/delete/--><?php //echo $news['id']; ?><!--" title="Удалить">-->
-<!--                            <i class="fa fa-trash" aria-hidden="true"></i></a></td>-->
+                    <td class="link"><a href="/admin/news/delete/<?php echo $news['id']; ?>" title="Удалить">
+                            <i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
             <?php endforeach;?>
             </table>

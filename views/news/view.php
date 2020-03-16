@@ -11,7 +11,7 @@
                 <div class="news-one__info">
                     <div class="news-one__author">Автор: <?php echo $newsItem['author_name'];?></div>
                     <time  datetime="<?php echo $newsItem['date'];?>"><?php echo $newsItem['date'];?></time>
-                    <a href="/" class="news-one-btn">Назад</a>
+                    <a href="<?php echo $_SERVER['HTTP_REFERER'];?>" class="news-one-btn">Назад</a>
                 </div>
 
             </div>

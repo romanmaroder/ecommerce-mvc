@@ -257,23 +257,29 @@
 .news-one {
     padding: 30px 0;
 }
+
 .news-one__title {
     margin-bottom: 30px;
     text-align: center;
 }
+
 .news-one__img {
     width: 100%;
-    height: auto;
-    margin: 0 15px 5px 0;
+    height: 100%;
+    margin: 0 15px 15px 0;
+    line-height: 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, .4);
 }
+
 .news-one__text,
-.news-one__text p{
+.news-one__text p {
     color: #8793B3;
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
     letter-spacing: .01em;
 }
+
 .news-one__info {
     margin-top: 20px;
     color: #dcdde1;
@@ -282,6 +288,7 @@
     letter-spacing: .01em;
     text-align: right;
 }
+
 .news-one-btn {
     display: block;
     width: fit-content;
@@ -623,6 +630,9 @@
     .news-one__img {
         float: left;
         width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 

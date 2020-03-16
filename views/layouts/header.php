@@ -34,6 +34,9 @@
 <!--    Стили кабинета-->
 	<link rel="stylesheet" href="/template/css/cabinet.css" />
 
+    <!--    Стили страницы новостей-->
+	<link rel="stylesheet" href="/template/css/news.css" />
+
     <title>Главная</title>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=cyrillic"/>

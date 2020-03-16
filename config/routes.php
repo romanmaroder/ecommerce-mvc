@@ -39,8 +39,9 @@
         'contacts'                                             => 'site/contact',
 
         // Управление новостями
-
+        'admin/news/create'                                    => 'adminNews/create',
         'admin/news/update/([0-9]+)'                           => 'adminNews/update/$1',
+        'admin/news/delete/([0-9]+)'                           => 'adminNews/delete/$1',
         'admin/news'                                           => 'adminNews/index',
         // actionIndex в AdminNewsController
         // actionIndex в AdminNewsController

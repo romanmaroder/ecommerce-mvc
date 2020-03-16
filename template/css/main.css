@@ -220,7 +220,7 @@ img, svg {
 
 img {
     display: inline-block;
-	max-width: 100%;
+    max-width: 100%;
     max-height: 100%;
     border: none
 }
@@ -1143,7 +1143,15 @@ p {
     .cart__mini-cart {
         -webkit-transform: translate(-50%, 20px);
         -ms-transform: translate(-50%, 20px);
-        transform: translate(-50%, 20px)
+        transform: translate(-50%, 20px);
+    }
+
+    .menu__item {
+        margin-right: 5px;
+    }
+
+    .menu__item:last-child {
+        margin-right: 0;
     }
 
     .menu__link {
@@ -1152,7 +1160,7 @@ p {
         font-size: 13px;
         font-weight: 700;
         line-height: 27px;
-        cursor: pointer
+        cursor: pointer;
     }
 
     .menu__link--active {
@@ -1163,7 +1171,7 @@ p {
 @media screen and (min-width: 768px) and (orientation: landscape) {
     .header {
         padding: 0 0 130px;
-        height: 100%
+        height: auto;
     }
 }
 

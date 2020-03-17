@@ -25,7 +25,7 @@
         }
 
         /**
-         * Action для страницы "добавить товар"
+         * Action для страницы "Добавить товар"
          * @return bool
          */
         public function actionCreate()

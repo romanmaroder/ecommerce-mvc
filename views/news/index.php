@@ -12,7 +12,8 @@
                                 <img src="<?php echo News::getImage($news['id']); ?>" alt="image"></a></div>
                         <div class="news-block__content">
                             <a class="news-block__link" href="<?php echo $news['id']; ?>">
-                                <h3 class="news-block__title"><?php echo $news['title']; ?></h3></a>
+                                <h3 class="news-block__title"><?php echo $news['title']; ?></h3>
+                            </a>
                             <p><?php echo $news['short_content']; ?></p>
                             <div class="news-block__info">
                                 <div class="news-block__author">Автор: <?php echo $news['author_name'];?></div>

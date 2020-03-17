@@ -237,7 +237,7 @@ html {
     border-radius: 3px;
     padding: 8px;
     display: block;
-    width: fit-content;
+    width:  max-content;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, .5);
     transition: .3s linear;
 }
@@ -261,7 +261,7 @@ html {
     border-radius: 2px;
     cursor: pointer;
     transition: .3s linear;
-    width: fit-content;
+    width:  max-content;
 }
 
 .admin__btn-save:hover {

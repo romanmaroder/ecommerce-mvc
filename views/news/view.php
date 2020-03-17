@@ -6,7 +6,9 @@
         <section class="news-one">
             <h1 class="news-one__title"><?php echo $newsItem['title'];?></h1>
             <div class="news-one__content">
-                <div class="news-one__img"><img src="<?php echo News::getImage( $newsItem['id']);?>" alt=""></div>
+                <div class="news-one__img">
+                    <img src="<?php echo News::getImage( $newsItem['id']);?>" alt="">
+                </div>
                 <div class="news-one__text"><?php echo $newsItem['content'];?></div>
                 <div class="news-one__info">
                     <div class="news-one__author">Автор: <?php echo $newsItem['author_name'];?></div>

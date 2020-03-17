@@ -24,9 +24,7 @@
         }
 
         /**
-         *
          * Action для страницы "Добавить новость"
-         * @return bool
          * @return bool
          */
         public static function actionCreate()

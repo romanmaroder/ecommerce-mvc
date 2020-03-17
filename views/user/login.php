@@ -1,8 +1,8 @@
 <?php include ROOT . '/views/layouts/header.php';
 
 /**
- * @var \UserController $password
- * @var \UserController $email
+ * @var UserController $password
+ * @var UserController $email
  */
 ?>
 <main class="content">

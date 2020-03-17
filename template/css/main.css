@@ -347,7 +347,8 @@ p {
 }
 
 .btn__clear, .btn__total {
-    width: 138px;
+    min-width: 138px;
+    padding: 0 10px;
     height: 41px;
     border: .5px solid #555F7645;
     color: #555F76

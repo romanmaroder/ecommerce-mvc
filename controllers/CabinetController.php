@@ -44,21 +44,21 @@
 
             $result = false;
 
-            if (isset($_POST['submit'])) {
+            if ( isset($_POST['submit']) ) {
                 $name = $_POST['name'];
                 $password = $_POST['password'];
 
                 $errors = false;
 
-                if (!User::checkName($name)) {
+                if ( !User::checkName($name) ) {
                     $errors[] = 'Имя не должно быть короче 2-х символов';
                 }
 
-                if (!User::checkPassword($password)) {
+                if ( !User::checkPassword($password) ) {
                     $errors[] = 'Пароль не может быть короче 6-ти символов';
                 }
 
-                if ($errors == false) {
+                if ( $errors == false ) {
                     $result = User::edit($userId, $name, $password);
                 }
             }
@@ -68,6 +68,10 @@
             return true;
         }
 
+        /**
+         * Action для страницы просмотра истории заказа в личном кабинете
+         * @return bool
+         */
         public function actionHistory()
         {
             $navCategories = array();
@@ -76,13 +80,12 @@
             //Получаем индитификатор пользователя из сессии
             $userId = User::checkLogged();
 
-            $ordersList = Order::getOrderListById($userId);
-
-            //Получаем индитификатор пользователя из сессии
-            $userId = User::checkLogged();
-
             //Получаем индитификатор пользователя из БД
             $user = User::getUserById($userId);
+
+            // Получаем список заказов пользователя
+            $ordersList = Order::getOrderListById($userId);
+
 
             require_once( ROOT . '/views/cabinet/history.php' );
 

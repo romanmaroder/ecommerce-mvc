@@ -16,6 +16,7 @@
         // actionSubcategory в CatalogController
         'category/([0-9]+)'                                    => 'catalog/category/$1',
         //    Каталог
+        'catalog/subcategory/([0-9]+)'                         => 'catalog/subcategory/$1',
         'catalog'                                              => 'catalog/index',
 
         //    Корзина

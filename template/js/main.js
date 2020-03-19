@@ -78,7 +78,7 @@ $(document).ready(function () {
         $('[data-js-goods-list]').fadeOut(300, function () {
             $(this).remove();
         });
-        $('[data-js-empty]').html('Your Basket is empty');
+        $('[data-js-empty]').html('ВАША КОРЗИНА ПУСТА');
         $('[data-js-goods-total]').remove();
         $('.btn__cart--checkout').remove();
         $(this).remove();

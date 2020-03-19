@@ -99,104 +99,10 @@
                             <div class="top-filter__title">View as</div>
                             <div class="top-filter__content">
                                 <div class="top-filter__icon top-filter__icon--list">
-                                    <!--                                    --><? /* //xml version="1.0" encoding="iso-8859-1"*/ ?>
-                                    <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                    <svg version="1.1" id="list" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                         viewBox="0 0 60.123 60.123" style="enable-background:new 0 0 60.123 60.123;"
-                                         xml:space="preserve">
-										<g>
-                                            <path d="M57.124,51.893H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3S58.781,51.893,57.124,51.893z"/>
-                                            <path d="M57.124,33.062H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3
-		C60.124,31.719,58.781,33.062,57.124,33.062z"/>
-                                            <path d="M57.124,14.231H16.92c-1.657,0-3-1.343-3-3s1.343-3,3-3h40.203c1.657,0,3,1.343,3,3S58.781,14.231,57.124,14.231z"/>
-                                            <circle cx="4.029" cy="11.463" r="4.029"/>
-                                            <circle cx="4.029" cy="30.062" r="4.029"/>
-                                            <circle cx="4.029" cy="48.661" r="4.029"/>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-									</svg>
+                                    <?php echo file_get_contents('./template/images/icon/list_icon.svg'); ?>
                                 </div>
                                 <div class="top-filter__icon top-filter__icon--grid">
-                                    <!--                                    --><? /* //xml version="1.0" encoding="iso-8859-1"*/ ?>
-                                    <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-                                    <svg version="1.1" id="grid" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                         viewBox="0 0 341.333 341.333"
-                                         style="enable-background:new 0 0 341.333 341.333;" xml:space="preserve">
-										<g>
-                                            <g>
-                                                <g>
-                                                    <rect x="128" y="128" width="85.333" height="85.333"/>
-                                                    <rect x="0" y="0" width="85.333" height="85.333"/>
-                                                    <rect x="128" y="256" width="85.333" height="85.333"/>
-                                                    <rect x="0" y="128" width="85.333" height="85.333"/>
-                                                    <rect x="0" y="256" width="85.333" height="85.333"/>
-                                                    <rect x="256" y="0" width="85.333" height="85.333"/>
-                                                    <rect x="128" y="0" width="85.333" height="85.333"/>
-                                                    <rect x="256" y="128" width="85.333" height="85.333"/>
-                                                    <rect x="256" y="256" width="85.333" height="85.333"/>
-                                                </g>
-                                            </g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-                                        <g>
-                                        </g>
-									</svg>
+                                    <?php echo file_get_contents('./template/images/icon/grid_icon.svg'); ?>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +162,7 @@
 
                                 <li class="card card--bg card__grid" data-id="<?php echo $product['id']; ?>">
                                     <a class="card__link card__add-btn" href="/cart/add/<?php echo $product['id']; ?>"
-                                       data-id="<?php echo $product['id'];?>">Add to card</a>
+                                       data-id="<?php echo $product['id'];?>">В корзину</a>
                                     <div class="card__add"></div>
                                     <div class="card__img card__img--grid"><img
                                                 src="<?php echo Product::getImage($product['id']); ?>"
@@ -287,7 +193,7 @@
                                         <a href="/cart/add/<?php echo $product['id']; ?>"
                                            class="btn btn__card card__add-btn"
                                            data-id="<?php echo $product['id']; ?>">
-                                            Add to card </a>
+                                            В корзину </a>
                                     </div>
                                 </li>
                             <?php endforeach; ?>

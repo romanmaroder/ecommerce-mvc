@@ -3,13 +3,23 @@
 
     class CatalogController
     {
-        public function actionIndex()
+        public function actionIndex($categoryId=1, $page=1)
         {
             $navCategories = array();
             $navCategories = Category::getNavCategoryList();
 
-            $latestProducts = array();
-            $latestProducts = Product::getLatestProducts(6);
+            // Получаем массив подкатегорий
+            $subcategories = array();
+            $subcategories = Category::getSubCategoriesListAdmin();
+
+            $categoryProducts = array();
+            $categoryProducts = Product::getProductsList();
+
+            //Получаем индитификатор пользователя из сессии
+            $userId = User::checkLogged();
+
+            //Получаем индитификатор пользователя из БД
+            $user = User::getUserById($userId);
 
             require_once( ROOT . '/views/catalog/index.php' );
 

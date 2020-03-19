@@ -26,11 +26,12 @@
     <?php endif; ?>
 
     <link rel="stylesheet" href="/template/css/form.css"/>
-<?php if(isset($title)) :?>
-    <title><?php echo $title; ?></title>
+
+    <?php if ( isset($title) ) : ?>
+        <title><?php echo $title; ?></title>
     <?php else: ?>
-    <title>Ecommerce</title>
-<?php endif; ?>
+        <title>Ecommerce</title>
+    <?php endif; ?>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap&amp;subset=cyrillic"/>
     <!--link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css")-->

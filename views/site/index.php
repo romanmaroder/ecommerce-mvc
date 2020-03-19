@@ -132,7 +132,7 @@
                     <?php foreach ( $productsByCategory as $product ) : ?>
                         <li class="card card--bg" data-id="<?php echo $product['id']; ?>">
                             <a class="card__link card__add-btn" href="/cart/add/<?php echo $product['id']; ?>"
-                               data-id="<?php echo $product['id']; ?>">Add to card</a>
+                               data-id="<?php echo $product['id']; ?>">В корзину</a>
                             <div class="card__add"></div>
                             <div class="card__img">
                                 <img src="<?php echo Product::getImage($product['id']); ?>"

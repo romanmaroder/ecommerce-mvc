@@ -83,6 +83,8 @@
             }
 
             // Подключаем вид
+            $styleLink = '/template/css/cart.css';
+            $title = 'Корзина';
             require_once( ROOT . '/views/cart/index.php' );
             return true;
 

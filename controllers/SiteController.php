@@ -37,6 +37,7 @@
                 $subscribe = User::getSubscribe($email);
             }
 
+            //Подключаем вид
             require_once(ROOT . '/views/site/index.php');
 
             return true;

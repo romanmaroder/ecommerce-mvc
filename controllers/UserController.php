@@ -47,6 +47,11 @@ class UserController
                 $result = User::register($name, $email, $password);
             }
         }
+
+        //Заголовок страницы
+        $title = 'Страница регистрации';
+
+        //Подключаем вид
         require_once(ROOT . '/views/user/register.php');
 
         return true;
@@ -92,6 +97,11 @@ class UserController
                 header("Location: /cabinet/");
             }
         }
+
+        //Заголовок страницы
+        $title = 'Страница входа';
+
+        //Подключаем вид
         require_once(ROOT . '/views/user/login.php');
 
         return true;

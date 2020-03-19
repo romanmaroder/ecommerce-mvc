@@ -12,6 +12,7 @@
         <div class="container">
             <?php if ( $result ) : ?>
                 <p class="form-block__success">Вы успешно зарегистрировались</p>
+                <p class="form-block__success">Войдите на сайт под своим логином и паролем</p>
             <?php else: ?>
 
             <h1 class="form-block__title">Зарегистрироваться</h1>

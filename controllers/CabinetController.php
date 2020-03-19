@@ -20,6 +20,11 @@
             //Получаем индитификатор пользователя из БД
             $user = User::getUserById($userId);
 
+            //Выводим заголовок страницы
+            $title ='Личный кабинет';
+
+            //Подключаем стили страницы
+            $styleLink = '/template/css/cabinet.css';
             // Подключаем вид
             require_once( ROOT . '/views/cabinet/index.php' );
             return true;
